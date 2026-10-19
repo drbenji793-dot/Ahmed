@@ -125,7 +125,7 @@ function bindEditor(root,s){
  title.oninput=body.oninput=changed;
  const act=(key,fn)=>{const n=root.querySelector(`[data-action="${key}"]`);if(n)n.onclick=fn};
  act("edit",()=>{editAnchor={title:s.title,body:s.body,rev:Number(s.rev)||1};editing=true;renderWriting();document.getElementById("alwChapterBody")?.focus()});
- act("save",()=>{commit(true);editing=false;editAnchor=null;renderWriting();toast("Saved and protected")});
+ act("save",()=>{if(!commit(true))return;editing=false;editAnchor=null;renderWriting();toast("Saved and protected")});
  act("copy",()=>copyText(title.value+"\n\n"+body.value));
  act("history",()=>renderHistory(root,s));
  act("print-chapter",()=>printChapters([s],current()?.title||"Ahmed"));
@@ -164,9 +164,11 @@ function renderHistory(root,s){
  panel.hidden=false;panel.dataset.open="1";
  panel.innerHTML='<div class="alw-revisions"><strong>Previous versions</strong><p class="alw-tip" style="margin:8px 0">Restoring creates a new revision. Your latest writing remains in history.</p>'+ (hist.length?hist.map((x,i)=>`<div class="alw-revision-row"><small>Revision ${Number(x.rev)||1} · ${esc(x.at||"Previously saved")} · ${words(x.body)} words</small>${button("Restore","restore","",`data-old="${i}"`)}</div>`).join(""):"<p>No older revisions yet. Save an edit to create one.</p>")+"</div>";
  panel.querySelectorAll('[data-action="restore"]').forEach(el=>el.onclick=()=>{
-  const old=hist[Number(el.dataset.old)],list=books(),b=list.find(x=>x.id===bookId),target=b?.sections.find(x=>x.id===sectionId);
-  if(!old||!target||!confirm("Restore this earlier version? The current text will remain in history."))return;
+  const old=hist[Number(el.dataset.old)];
+  if(!old||!confirm("Restore this earlier version? The current text will remain in history."))return;
   leaveEdit();
+  const list=books(),b=list.find(x=>x.id===bookId),target=b?.sections.find(x=>x.id===sectionId);
+  if(!target)return;
   const before={rev:Number(target.rev)||1,title:target.title,body:target.body,at:stamp()};
   target.history=Array.isArray(target.history)?target.history:[];target.history.push(before);
   if(target.history.length>40)target.history.shift();
@@ -206,9 +208,10 @@ async function handleAction(action,dataset){
  if(action==="new-character")openDialog("new-character");
  if(action==="edit-character")openDialog("edit-character",dataset.id);
  if(action==="draw-character")openDraw({type:"character",id:dataset.id});
+ if(action==="upload-target")startUpload({type:"character",id:dataset.id});
  if(action==="draw-book")openDraw({type:"book",id:bookId});
- if(action==="upload")startUpload();
- if(action==="draw")openDraw({type:"book",id:bookId});
+ if(action==="upload")startUpload(galleryTarget());
+ if(action==="draw")openDraw(galleryTarget());
  if(action==="export")await exportBook();
  if(action==="import")startImport();
  if(action==="text")exportText();
@@ -224,7 +227,7 @@ async function handleAction(action,dataset){
 function charactersPage(root){
  const b=current(),items=sections("characters");
  root.innerHTML=bookHeader(b)+heading("Character Studio","Give your characters a personality, a history and their own drawings.",button("+ Character","new-character","primary")+button("Draw Character","draw-book"));
- root.innerHTML+=`<div class="alw-grid">${items.map(x=>`<article class="alw-character"><div class="alw-character-image" data-character-img="${esc(x.id)}">✍</div><div class="alw-character-content"><h3 dir="auto">${esc(x.title)}</h3><p>${esc([x.profile?.role,x.profile?.age?("Age "+x.profile.age):""].filter(Boolean).join(" · ")||"Character profile")}</p><p>${esc(x.profile?.personality||x.body||"Add appearance, motives and personality.")}</p><div class="alw-character-actions">${button("Edit","edit-character","",`data-id="${esc(x.id)}"`)}${button("Draw","draw-character","",`data-id="${esc(x.id)}"`)}${button("Delete","delete-character","danger",`data-id="${esc(x.id)}"`)}</div></div></article>`).join("")}</div>`;
+ root.innerHTML+=`<div class="alw-grid">${items.map(x=>`<article class="alw-character"><div class="alw-character-image" data-character-img="${esc(x.id)}">✍</div><div class="alw-character-content"><h3 dir="auto">${esc(x.title)}</h3><p>${esc([x.profile?.role,x.profile?.age?("Age "+x.profile.age):""].filter(Boolean).join(" · ")||"Character profile")}</p><p>${esc(x.profile?.personality||x.body||"Add appearance, motives and personality.")}</p><div class="alw-character-actions">${button("Edit","edit-character","",`data-id="${esc(x.id)}"`)}${button("Draw","draw-character","",`data-id="${esc(x.id)}"`)}${button("Upload","upload-target","",`data-id="${esc(x.id)}"`)}${button("Delete","delete-character","danger",`data-id="${esc(x.id)}"`)}</div></div></article>`).join("")}</div>`;
  if(!items.length)root.innerHTML+='<div class="alw-empty">Create a character, then draw them or add a photo.</div>';
  bindBookActions(root);bindActions(root);
  showCharacterArt(root,items);
@@ -251,7 +254,7 @@ function notesPage(root){
 }
 async function artworkPage(root){
  const b=current();
- root.innerHTML=bookHeader(b)+heading("Artwork Gallery","Draw a character, design a book cover or upload your own art.",button("✎ Draw","draw","primary")+button("Upload Art","upload"));
+ root.innerHTML=bookHeader(b)+heading("Artwork Gallery","Draw a character, design a book cover or upload your own art.",targetSelectGallery()+button("✎ Draw","draw","primary")+button("Upload Art","upload"));
  root.innerHTML+='<div class="alw-gallery" id="alwGallery"><div class="alw-empty">Loading artwork…</div></div>';
  root.innerHTML+='<div class="alw-tip">Art is kept on this device in browser artwork storage. The Export Backup includes both writing and artwork.</div>';
  bindBookActions(root);bindActions(root);
@@ -384,6 +387,16 @@ function targets(){
  const b=current();if(!b)return[];
  return [{type:"book",id:b.id,name:"Book cover or general art"},...(b.sections||[]).filter(s=>s.kind==="characters").map(s=>({type:"character",id:s.id,name:"Character: "+s.title})),...(b.sections||[]).filter(s=>s.kind==="chapters").map(s=>({type:"chapter",id:s.id,name:"Chapter: "+s.title}))];
 }
+
+function targetSelectGallery(){
+ return '<label class="alw-visually-hidden" for="alwGalleryTarget">Artwork attachment</label><select class="alw-btn" id="alwGalleryTarget" aria-label="Attach new artwork to">'+targets().map(x=>'<option value="'+esc(x.type)+':'+esc(x.id)+'">'+esc(x.name)+'</option>').join("")+'</select>';
+}
+function galleryTarget(){
+ const value=document.getElementById("alwGalleryTarget")?.value;
+ if(!value)return {type:"book",id:bookId};
+ const cut=value.indexOf(":");return {type:value.slice(0,cut),id:value.slice(cut+1)};
+}
+
 function targetSelect(selected){
  return `<label for="alwTarget" class="alw-visually-hidden">Attach artwork to</label><select id="alwTarget" aria-label="Attach art to">${targets().map(x=>`<option value="${esc(x.type)}:${esc(x.id)}" ${selected?.type===x.type&&selected?.id===x.id?"selected":""}>${esc(x.name)}</option>`).join("")}</select>`;
 }
@@ -396,7 +409,7 @@ async function saveArtData(data,title,target){
  const item={id:id(),bookId,targetType:target?.type||"book",targetId:target?.id||bookId,title:(title||"Ahmed's drawing").trim().slice(0,150),kind:"art",data,isCover:false,updatedAt:new Date().toISOString()};
  try{await putArt(item);toast("Art saved in this browser");return true}catch(e){toast("Could not store artwork. Check available device storage.");return false}
 }
-function startUpload(){
+function startUpload(target){
  if(!bookId){toast("Create a story first");return}
  const file=document.createElement("input");file.type="file";file.accept="image/png,image/jpeg,image/webp";
  file.onchange=async()=>{
@@ -409,7 +422,7 @@ function startUpload(){
    const cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(image,0,0,cv.width,cv.height);
    const data=cv.toDataURL("image/jpeg",0.85);
    const name=(f.name||"Artwork").replace(/\.[^.]+$/,"");
-   if(await saveArtData(data,name,{type:"book",id:bookId})){tab="artwork";renderWriting()}
+   if(await saveArtData(data,name,target||{type:"book",id:bookId})){tab="artwork";renderWriting()}
   }catch(e){toast("Could not read this image")}
  };
  file.click();
