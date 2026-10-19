@@ -1,0 +1,692 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Ahmed | Life Lab</title><meta name="theme-color" content="#142F23"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Ahmed Life Lab"><link rel="icon" type="image/svg+xml" href="/ahmed-icon.svg?v=2"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2"><link rel="manifest" href="/manifest.webmanifest?v=2"><style>
+:root{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#263a31;background:#f7f5ef}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}aside{position:fixed;inset:0 auto 0 0;width:236px;background:#eeefe8;border-right:1px solid #e0e4d9;padding:28px 18px;display:flex;flex-direction:column}header.logo{font-size:27px;font-weight:760;letter-spacing:-1.3px;margin:0 10px 30px}.logo a{display:inline-block;color:inherit;text-decoration:none;border-radius:6px}.logo a:focus-visible{outline:2px solid #345543;outline-offset:4px}.logo span{display:block;font-size:10px;letter-spacing:3px;color:#74857a;font-weight:650}.nav{display:grid;gap:5px}.nav button{text-align:left;border:0;background:transparent;border-radius:10px;padding:12px 13px;color:#56695c;font-weight:560}.nav button.active,.nav button:hover{background:#dce5d9;color:#284b39}.foot{margin-top:auto;font-size:12px;color:#748278;padding:12px}main{margin-left:236px;padding:40px clamp(20px,5vw,80px);max-width:1450px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.eyebrow{color:#829083;font-size:11px;letter-spacing:2px;font-weight:750;text-transform:uppercase}h1{letter-spacing:-1.7px;font-size:clamp(30px,4vw,46px);margin:10px 0}p{color:#6a796e;line-height:1.55}.hero{background:#e7ecdf;border-radius:20px;padding:32px;margin:26px 0}.hero h2{margin:8px 0;font-size:29px;letter-spacing:-.9px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card,.panel{background:#fff;border:1px solid #e7e9e1;border-radius:17px;padding:23px;box-shadow:0 3px 9px #25382905}.card{cursor:pointer;transition:transform .15s}.card:hover{transform:translateY(-2px)}.symbol{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:#eef2e9;color:#456653;font-size:22px}.card h3{margin:16px 0 4px}.card p{font-size:13px;margin:0}.chip{background:#edf0e8;color:#587160;padding:8px 13px;border-radius:50px;font-size:12px;font-weight:700}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.primary{background:#345543;color:white;border:0;padding:12px 18px;border-radius:10px;font-weight:650}.secondary{background:#e9ede6;border:0;padding:10px 14px;border-radius:9px;color:#365340}.danger{color:#9a4b4b}.items{display:grid;gap:10px}.item{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:15px;border:1px solid #e7e9e1;border-radius:12px;background:#fff}.item strong{display:block}.item small{display:block;color:#8a948b;margin-top:5px}.item .actions{display:flex;gap:6px}.empty{text-align:center;padding:40px 10px;color:#829083;border:1px dashed #d8ddd2;border-radius:14px}.modal{position:fixed;inset:0;background:#10201888;display:none;align-items:center;justify-content:center;padding:16px;z-index:9}.modal.show{display:flex}.dialog{background:#fafbf8;width:min(540px,100%);padding:25px;border-radius:18px;max-height:90vh;overflow:auto}.dialog label{display:block;margin:15px 0 6px;font-size:13px;font-weight:700}.dialog input,.dialog textarea,.dialog select{width:100%;border:1px solid #d5ddd1;background:white;border-radius:10px;padding:11px;color:#263a31}.dialog textarea{min-height:130px}.dialog .buttons{display:flex;gap:9px;margin-top:20px}.small{font-size:12px}.notice{background:#fff9e9;border:1px solid #f0e3bb;padding:12px 16px;border-radius:10px;font-size:12px;color:#766537;margin:20px 0}#menu{display:none}@media(max-width:900px){aside{position:static;width:auto;padding:18px}.logo{margin:0 0 12px!important}.nav{display:flex;overflow:auto;gap:3px}.nav button{white-space:nowrap;font-size:12px;padding:9px}aside .foot{display:none}main{margin:0;padding:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.grid{grid-template-columns:1fr}.hero{padding:22px}.card{padding:18px}.item{align-items:flex-start}.item .actions{flex-direction:column}}
+
+/* Responsive navigation refresh · Ahmed Life Lab · October 2026 */
+.nav button{display:flex;align-items:center;gap:10px}
+.nav .nav-icon{flex:0 0 22px;display:inline-flex;justify-content:center;align-items:center;font-size:17px;line-height:1}
+.nav .nav-label{min-width:0;line-height:1.2}
+@media(max-width:900px){
+  aside{padding:14px 14px 12px}
+  header.logo{margin:0 0 12px!important;font-size:26px}
+  .nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;overflow:visible;width:100%}
+  .nav button{display:flex;align-items:center;gap:7px;min-width:0;min-height:40px;padding:8px 9px;border:1px solid #e0e5db;border-radius:10px;background:#f9faf6;color:#506557;white-space:normal;text-align:left;font-size:12px;font-weight:630;line-height:1.15}
+  .nav button.active{background:#dce5d9;border-color:#cadacc;color:#284b39}
+  .nav .nav-icon{flex:0 0 19px;font-size:15px}
+  .nav .nav-label{white-space:normal;overflow-wrap:normal}
+  main{padding:14px 14px 24px}
+  .top{align-items:center;gap:6px;margin-bottom:10px}
+  .top .eyebrow{font-size:10px;letter-spacing:1.2px}
+  .top .chip{font-size:11px;padding:7px 9px}
+  h1{margin:8px 0 12px;font-size:clamp(29px,7vw,39px);line-height:1.15}
+  .hero{margin:15px 0;padding:20px}
+  .hero h2{font-size:24px}
+  .hero p{margin-bottom:0}
+}
+@media(max-width:390px){
+  .nav button{font-size:11px;gap:5px;padding:8px 7px}
+  .nav .nav-icon{flex-basis:17px;font-size:14px}
+  .top .eyebrow{letter-spacing:.7px}
+}
+
+.idea-launcher{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;margin-top:14px;padding:15px 18px;color:#263a31;font:inherit;border-radius:15px}
+.idea-launcher:hover,.idea-launcher:focus-visible{background:#fbfcf9;border-color:#bccfbd;outline-offset:2px}
+.idea-launcher-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:11px;background:#edf2e9;font-size:20px}
+.idea-launcher-label{display:flex;flex-direction:column;gap:5px;min-width:0}
+.idea-launcher-label strong{font-size:16px;font-weight:730;color:#263a31}
+.idea-launcher-label small{font-size:12px;color:#7b8b7b}
+.idea-launcher-arrow{margin-left:auto;color:#698473;font-size:23px}
+@media(max-width:900px){.idea-launcher{padding:12px 14px;margin-top:12px}}
+
+/* Ahmed personal calendar */
+.ahc{max-width:1350px;margin:0 auto 25px;color:#2a4535}
+.ahc button,.ahc select{font:inherit;cursor:pointer}
+.ahc-header{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}
+.ahc-kicker{font-size:10px;font-weight:750;color:#799080;letter-spacing:1.7px}
+.ahc-header h1{font-size:clamp(28px,3vw,39px);margin:7px 0 4px}
+.ahc-header p{margin:0;font-size:13px}
+.ahc-tools{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.ahc-btn,.ahc-select{min-height:35px;padding:8px 11px;border:1px solid #bccdbb;border-radius:9px;background:#fff;color:#2d4b3a;font-weight:620;font-size:12px}
+.ahc-btn.active{background:#214d39;color:#fff;border-color:#214d39}
+.ahc-controls{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap;margin:13px 0 7px}
+.ahc-fields,.ahc-pager,.ahc-views{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ahc-select{font-weight:500;padding:8px;max-width:150px}
+.ahc-pager .arrow{font-size:18px;min-width:36px}
+.ahc-caption{margin:13px 0 6px;font-size:19px;font-weight:750;letter-spacing:-.3px}
+.ahc-yearbar{display:flex;align-items:center;gap:10px}
+.ahc-legend{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 5px}
+.ahc-pri{font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid currentColor}
+.ahc-pri.urgent{background:#fdf0f1;color:#a92d38}
+.ahc-pri.high{background:#fff3e9;color:#a45b32}
+.ahc-pri.normal{background:#edf4ed;color:#42724d}
+.ahc-pri.low{background:#ebf3fb;color:#3c6f97}
+.ahc-pri.picked{outline:2px solid currentColor;outline-offset:1px}
+.ahc-hint{font-size:11px;color:#78897d;margin:5px 0 11px}
+.ahc-month{border:1px solid #c2d0bf;border-radius:12px;overflow:hidden;background:#fff}
+.ahc-week-head,.ahc-month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.ahc-week-head{background:#e5ede1}
+.ahc-week-head span{text-align:center;font-weight:730;font-size:12px;padding:10px 2px}
+.ahc-cell{min-width:0;min-height:103px;padding:4px 5px;border-top:1px solid #cad8c6;border-right:1px solid #cad8c6}
+.ahc-cell:nth-child(7n){border-right:0}
+.ahc-cell.outside{background:#f4f6f3}
+.ahc-cell.selected{background:#f1f7ef;box-shadow:inset 0 0 0 2px #739575}
+.ahc-number-line{display:flex;justify-content:flex-end;margin-bottom:4px}
+.ahc-number{border:0;border-radius:25px;background:transparent;color:#2d4b3a;font-size:12px;font-weight:750;min-width:27px;min-height:27px}
+.ahc-cell.today .ahc-number{background:#214d39;color:#fff}
+.ahc-cell.outside .ahc-number{color:#99a89b}
+.ahc-chips{display:grid;gap:3px}
+.ahc-chip{display:block;min-width:0;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;border:0;border-left:3px solid #56805a;border-radius:5px;padding:4px 5px;background:#ebf3e9;color:#355a39;font-size:10px;line-height:1.4}
+.ahc-chip.urgent{background:#fef0f1;border-color:#ba3441;color:#aa3540}
+.ahc-chip.high{background:#fff0e6;border-color:#bd794d;color:#985b38}
+.ahc-chip.low,.ahc-chip.university{background:#eaf2fa;border-color:#4578a5;color:#35628b}
+.ahc-chip.done{text-decoration:line-through;opacity:.65}
+.ahc-more{font-size:10px;color:#6f806f}
+.ahc-agenda{border:1px solid #e0e7dc;border-radius:12px;background:#fff;padding:14px;margin:16px 0}
+.ahc-agenda-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.ahc-agenda-head h2{font-size:17px;margin:0}
+.ahc-agenda-list{display:grid;gap:7px}
+.ahc-entry{display:flex;gap:9px;align-items:center;justify-content:space-between;border-left:4px solid #557f5d;background:#f4f7f2;padding:10px 11px;border-radius:7px;min-width:0}
+.ahc-entry.urgent{background:#fef2f2;border-color:#b73442}
+.ahc-entry.high{background:#fff4ed;border-color:#b8794c}
+.ahc-entry.low,.ahc-entry.university{background:#eef5fc;border-color:#5380a4}
+.ahc-entry.done{opacity:.65}
+.ahc-entry.done strong{text-decoration:line-through}
+.ahc-details{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.ahc-details strong{font-size:12px;overflow-wrap:anywhere}
+.ahc-details small{font-size:11px;color:#718273;white-space:pre-wrap;overflow-wrap:anywhere}
+.ahc-entry-tools{display:flex;gap:6px;align-items:center}
+.ahc-entry-tools button{border:1px solid #c4d3c1;background:#fff;color:#365942;border-radius:7px;padding:6px 9px;font-size:11px}
+.ahc-entry-tools input{accent-color:#356542;width:16px;height:16px}
+.ahc-empty{color:#819181;font-size:12px;padding:12px}
+.ahc-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid #c5d3c2;border-radius:12px;overflow:hidden;background:#fff}
+.ahc-week-col{padding:8px;min-width:0;min-height:170px;border-right:1px solid #cbd8c9}
+.ahc-week-col:last-child{border-right:0}
+.ahc-week-col.selected{background:#f0f6ed}
+.ahc-week-col>button{border:0;background:transparent;font-size:12px;font-weight:740;color:#305341;margin-bottom:12px}
+.ahc-week-col .ahc-chip{margin-bottom:5px}
+.ahc-year{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ahc-mini{border:1px solid #d7e1d4;border-radius:12px;background:#fff;padding:11px;min-width:0}
+.ahc-mini-title{border:0;background:transparent;color:#2c533b;font-size:13px;font-weight:760;margin-bottom:8px}
+.ahc-mini-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}
+.ahc-mini-grid span,.ahc-mini-grid button{border:0;background:transparent;text-align:center;border-radius:4px;padding:4px 0;font-size:10px;min-width:0;color:#496c50}
+.ahc-mini-grid button.has{background:#dcebd7;font-weight:750}
+.ahc-mini-grid button.today{background:#264b38;color:white}
+.ahc-footnote{margin-top:12px;background:#fff9e9;border:1px solid #f1e4c0;border-radius:9px;padding:10px 12px;font-size:11px;color:#826d49}
+.ahc-overlay{position:fixed;inset:0;background:#13271bbb;z-index:50;display:none;align-items:center;justify-content:center;padding:14px}
+.ahc-overlay.show{display:flex}
+.ahc-dialog{background:white;border-radius:16px;max-height:90dvh;overflow:auto;width:min(520px,100%);padding:20px}
+.ahc-dialog h2{margin:0 0 12px}
+.ahc-dialog label{font-size:12px;font-weight:700;display:block;margin:10px 0 5px}
+.ahc-dialog input:not([type=checkbox]),.ahc-dialog textarea,.ahc-dialog select{width:100%;min-width:0;border:1px solid #c5d4c2;border-radius:8px;padding:10px;font:inherit;font-size:13px;box-sizing:border-box;background:white;color:#2a4635}
+.ahc-dialog textarea{min-height:95px}
+.ahc-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 10px}
+.ahc-modal-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:15px}
+@media(max-width:900px){.ahc-cell{min-height:85px}.ahc-controls{justify-content:flex-start}.ahc-header{align-items:flex-start}}
+@media(max-width:650px){
+ .ahc-header h1{font-size:28px}.ahc-tools .ahc-btn{padding:8px;font-size:11px}
+ .ahc-controls .ahc-fields{flex:1 1 100%}.ahc-cell{min-height:55px;padding:2px 1px}
+ .ahc-week-head span{font-size:10px;padding:8px 1px}
+ .ahc-number-line{justify-content:center}.ahc-number{min-height:23px;min-width:23px;font-size:11px;padding:0}
+ .ahc-chips{text-align:center;display:block;line-height:8px}
+ .ahc-chip{display:inline-block;vertical-align:middle;width:6px;height:6px;margin:1px;padding:0;border:0;border-radius:50%;font-size:0}
+ .ahc-more{font-size:9px}.ahc-week-col{padding:4px 1px;min-height:90px}
+ .ahc-week-col>button{padding:0;font-size:10px}.ahc-week-col .ahc-chip{display:block;margin:3px auto}
+ .ahc-year{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ahc-mini{padding:7px 5px}.ahc-mini-grid span,.ahc-mini-grid button{font-size:9px;padding:3px 0}
+ .ahc-agenda{padding:11px}.ahc-agenda-head h2{font-size:15px}.ahc-form-grid{gap:3px 7px}
+}
+@media print{
+  body{background:#fff!important}aside,.top,main>.notice,.ahc-tools,.ahc-controls,.ahc-yearbar,.ahc-legend,.ahc-hint,.ahc-footnote,.ahc-overlay,.ahc-agenda-head button,.ahc-entry-tools{display:none!important}
+  main{max-width:none!important;margin:0!important;padding:0!important}.ahc{max-width:100%}
+  .ahc-cell{min-height:84px!important;break-inside:avoid}.ahc-year{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ahc-week-head,.ahc-month-grid,.ahc-mini{break-inside:avoid}.ahc-chip{white-space:normal}
+}
+
+/* Ahmed Life Lab daily workspace */
+.ahd{max-width:1420px}
+.ahd-greeting{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:4px 0 15px;flex-wrap:wrap}
+.ahd-greeting .ahd-kicker{font-size:10px;color:#788b7c;letter-spacing:1.4px;font-weight:770;text-transform:uppercase}
+.ahd-greeting h1{margin:8px 0 5px;font-size:clamp(29px,3.7vw,42px);letter-spacing:-1.5px;line-height:1.13}
+.ahd-greeting p{margin:0;font-size:13px;color:#748377}
+.ahd-date-pill{border:1px solid #ccd9ca;border-radius:30px;padding:10px 15px;background:#eef2e9;color:#325840;font-size:12px;font-weight:750;cursor:pointer}
+.ahd-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 18px}
+.ahd-stats>div{border:1px solid #e1e8dd;border-radius:12px;padding:11px 14px;background:#fff;display:flex;gap:10px;align-items:center;min-width:0}
+.ahd-stats strong{font-size:24px;font-weight:790;color:#2f513d}
+.ahd-stats span{font-size:11px;color:#758578;font-weight:620}
+.ahd-layout{display:grid;grid-template-columns:minmax(0,1fr) 188px;align-items:start;gap:16px}
+.ahd-work,.ahd-panel,.ahd-columns{min-width:0}
+.ahd-columns{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:13px;align-items:start}
+.ahd-panel{background:#fff;border:1px solid #e0e7dd;border-radius:15px;padding:14px}
+.ahd-panel-top{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:49px}
+.ahd-eyebrow{font-size:9px;letter-spacing:1.4px;font-weight:800;color:#819485}
+.ahd-panel h2{margin:5px 0;color:#2c4e39;font-size:19px;letter-spacing:-.35px}
+.ahd-solid-btn{border:0;border-radius:9px;background:#214e39;color:#fff;padding:9px 12px;font-size:12px;font-weight:720;cursor:pointer;white-space:nowrap}
+.ahd-note-add{background:#557b63}
+.ahd-panel-controls{display:flex;align-items:center;flex-wrap:wrap;gap:7px;min-height:43px;margin:2px 0 10px;color:#829082;font-size:11px}
+.ahd-panel-controls label{font-weight:730;color:#536858}
+.ahd-panel-controls select{font:inherit;font-size:12px;color:#34513e;border:1px solid #cad7c6;background:#fff;border-radius:8px;padding:7px 8px;min-width:98px}
+.ahd-filter{margin-left:auto;border:1px solid #d4dfd0;background:#f5f8f3;border-radius:8px;color:#567460;padding:7px 9px;font-size:11px;font-weight:710;cursor:pointer}
+.ahd-filter.on{color:#fff;background:#416b50}
+.ahd-task-list,.ahd-note-list{display:grid;gap:8px}
+.ahd-task{border:1px solid #d2dfd0;background:#f4f8f2;border-radius:11px;padding:11px}
+.ahd-task.urgent{border-color:#e5a3a4;background:#fff4f3}
+.ahd-task.high{border-color:#e3bb9c;background:#fff7f0}
+.ahd-task.low{border-color:#aec9de;background:#f4f9fd}
+.ahd-task.is-done{opacity:.72}
+.ahd-card-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.ahd-card-heading strong{font-size:13px;line-height:1.45;color:#2b4535;overflow-wrap:anywhere}
+.ahd-task.is-done strong{text-decoration:line-through}
+.ahd-task-tag{background:#e8eee5;border-radius:6px;color:#617966;font-size:10px;padding:4px 6px;flex-shrink:0}
+.ahd-description{margin:6px 0;color:#58695e;font-size:11px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ahd-task-meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:9px 0 5px;color:#687b6c;font-size:11px}
+.ahd-priority{border:1px solid currentColor;border-radius:6px;padding:2px 5px;color:#46724c;background:#e5f0e4}
+.ahd-priority.urgent{color:#b42b3b;background:#fbe9ec}
+.ahd-priority.high{color:#9b5d30;background:#fff0e6}
+.ahd-priority.low{color:#326c97;background:#e9f2fa}
+.ahd-overdue{color:#b12935;font-weight:750}
+.ahd-due-today{font-weight:750;color:#aa6a38}
+.ahd-task-actions,.ahd-note-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:10px;flex-wrap:wrap}
+.ahd-small-btn{background:#fff;border:1px solid #cad7c7;border-radius:7px;padding:6px 10px;font-size:11px;font-weight:700;color:#36543e;cursor:pointer}
+.ahd-small-btn.ahd-done{background:#e6eee4}
+.ahd-note-card{background:#f6f9f5;border:1px solid #bdcfbc;border-radius:11px;padding:12px}
+.ahd-note-card .ahd-card-heading strong{font-size:13px}
+.ahd-note-body{font-size:11px;color:#647467;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;margin:9px 0 3px}
+.ahd-empty{border:1px dashed #d7e1d4;border-radius:10px;padding:26px 13px;font-size:12px;color:#89978b;line-height:1.5;text-align:center}
+.ahd-more{background:none;border:0;text-decoration:underline;color:#396d4e;font-size:11px;margin-top:13px;font-weight:720;cursor:pointer}
+.ahd-note-count{font-size:11px;color:#869586;margin:9px}
+.ahd-upcoming{border:1px solid #dde6d9;border-radius:13px;padding:13px 14px;margin-top:12px;background:#f8faf6}
+.ahd-upcoming-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.ahd-upcoming h2{font-size:14px;margin:0}
+.ahd-plain-btn{border:0;background:transparent;color:#3b684b;font-size:11px;font-weight:700;cursor:pointer;padding:5px}
+.ahd-event-list{display:flex;flex-wrap:wrap;gap:7px}
+.ahd-event-chip{display:flex;align-items:center;gap:7px;border:1px solid #cbd9c8;background:#fff;color:#416049;border-radius:9px;padding:8px 9px;font-size:11px;cursor:pointer;text-align:left}
+.ahd-event-date{font-weight:800;color:#2b573b}
+.ahd-upcoming-empty{font-size:11px;color:#88998a}
+.ahd-rail{background:#edf1e9;border:1px solid #dde7d9;border-radius:15px;padding:12px}
+.ahd-rail h2{font-size:16px;color:#325341;margin:3px 0 4px}
+.ahd-rail p{font-size:11px;color:#819083;margin:0 0 13px}
+.ahd-shortcuts{display:grid;gap:7px}
+.ahd-shortcut{display:flex;align-items:center;gap:8px;border:1px solid #e4ebe0;background:#fff;border-radius:9px;min-height:42px;padding:7px 9px;color:#34533f;font-size:11px;font-weight:730;text-align:left;cursor:pointer}
+.ahd-shortcut:hover{background:#f8faf7}
+.ahd-shortcut-symbol{font-size:17px;flex:0 0 23px}
+.ahd-chev{margin-left:auto;font-size:19px;color:#859b86}
+.ahd-mobile-project{display:none}
+.ahd-local-note{font-size:10px;color:#8b8974;margin:13px 2px 0}
+.ahd-modal{display:none;position:fixed;inset:0;z-index:60;background:#142b20b8;padding:16px;align-items:center;justify-content:center}
+.ahd-modal.show{display:flex}
+.ahd-note-dialog{background:#fff;border-radius:15px;padding:20px;width:min(520px,100%);max-height:90dvh;overflow:auto;box-shadow:0 20px 45px #0002}
+.ahd-note-dialog-head{display:flex;align-items:center;justify-content:space-between}
+.ahd-note-dialog h2{font-size:21px;margin:0 0 12px}
+.ahd-note-dialog label{display:block;font-size:12px;font-weight:720;color:#3b5b43;margin:12px 0 5px}
+.ahd-note-dialog input,.ahd-note-dialog textarea{border:1px solid #c9d8c4;border-radius:9px;padding:11px;background:white;width:100%;font:inherit;font-size:13px;box-sizing:border-box;color:#2a4536}
+.ahd-note-dialog textarea{resize:vertical;line-height:1.6;min-height:150px}
+.ahd-note-dialog-actions{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:15px}
+@media(max-width:1210px){.ahd-layout{grid-template-columns:minmax(0,1fr) 166px;gap:11px}.ahd-columns{gap:9px}.ahd-panel{padding:11px}.ahd-rail{padding:9px}}
+@media(max-width:1050px){.ahd-layout{grid-template-columns:1fr}.ahd-rail{display:none}.ahd-mobile-project{display:flex;align-items:center;gap:9px;padding:13px 16px;border:1px solid #cfddcb;border-radius:11px;background:#fff;width:100%;margin-top:12px;color:#35583f;text-align:left;cursor:pointer}.ahd-mobile-project span:first-child{font-size:20px}.ahd-mobile-project span:nth-child(2){display:flex;flex:1;flex-direction:column;gap:4px}.ahd-mobile-project small{color:#819083;font-size:10px}}
+@media(max-width:720px){.ahd-columns{grid-template-columns:1fr;gap:12px}.ahd-panel{padding:13px}.ahd-greeting{margin-top:8px}.ahd-stats{gap:6px}.ahd-stats>div{padding:9px 7px;display:flex;flex-direction:column;gap:2px;text-align:center}.ahd-stats strong{font-size:20px}.ahd-stats span{font-size:9px}.ahd-greeting .ahd-kicker{font-size:9px;letter-spacing:1px}.ahd-greeting h1{font-size:30px}}
+@media(max-width:420px){.ahd-stats>div{min-height:58px}.ahd-date-pill{padding:7px 10px;font-size:11px}.ahd-panel-top h2{font-size:18px}}
+
+/* Unified site navigation v2: one global sidebar, no duplicate home Explore panel. */
+.ahd-layout{grid-template-columns:minmax(0,1fr)!important}
+.ahd-rail,.ahd-mobile-project{display:none!important}
+@media(min-width:1051px){.ahd-columns{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:16px}}
+@media(max-width:900px){
+ .nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;overflow:visible;width:100%}
+ .nav button{min-height:40px;min-width:0;white-space:normal}
+ .nav .nav-label{overflow-wrap:anywhere}
+}
+</style></head><body><aside><header class="logo"><a id="ahmedHome" href="/" aria-label="Ahmed Life Lab home" title="Back to Dashboard">ahmed.<span>LIFE LAB</span></a></header><nav class="nav" id="nav"></nav><div class="foot">Learn · Create · Grow<br/>Ahmed Life Lab v1</div></aside><main><div class="top"><div class="eyebrow">YOUR PERSONAL WORKSPACE</div><div class="chip" id="clock">Dubai · UAE</div></div><div id="content"></div><div class="notice">Private prototype: entries are saved only in this browser on this device. Cloud synchronization and accounts are not connected yet. Avoid entering sensitive medical details.</div></main><div id="modal" class="modal"><div class="dialog"><h2 id="modalTitle">New entry</h2><form id="entryForm"><label for="entryTitle">Title</label><input id="entryTitle" maxlength="150" required placeholder="Give this a name"/><label for="entryDate">Date (optional)</label><input type="date" id="entryDate"/><label for="entryDetails">Notes</label><textarea id="entryDetails" placeholder="Details, ideas, goals..."></textarea><div class="buttons"><button class="primary" type="submit">Save entry</button><button class="secondary" type="button" id="cancel">Cancel</button></div></form></div></div><script>
+const modules=[{id:'university',icon:'🎓',name:'University Planner',desc:'Courses, homework, exams and study goals',hint:'Track assignments and your psychology studies'},{id:'writing',icon:'✍️',name:'Writing Studio',desc:'Notes, essays, chapters and books',hint:'Capture an idea, essay or book chapter'},{id:'life',icon:'📅',name:'Life Organizer',desc:'Calendar, tasks and routines',hint:'Organize personal tasks and important dates'},{id:'sports',icon:'🏃',name:'Sports & Wellness',desc:'Training, activity and wellness goals',hint:'Log training and healthy habits'},{id:'car',icon:'🚙',name:'Car Planner',desc:'Nissan and future car comparisons',hint:'Save and compare vehicles and budgets'},{id:'coding',icon:'⌘',name:'Coding Lab',desc:'Build projects and learn to publish',hint:'Log your first coding project'},{id:'projects',icon:'💡',name:"Ahmed's Projects",desc:'Ideas, notes and things to build',hint:'Save ideas, brainstorm projects and plan what to build next'}];let page='home',editing=null;
+function all(){try{return JSON.parse(localStorage.getItem('ahmed-life-lab-v1')||'{}')}catch{return {}}}function save(v){localStorage.setItem('ahmed-life-lab-v1',JSON.stringify(v))}function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){document.getElementById('nav').innerHTML='<button class="'+(page==='home'?'active':'')+'" data-page="home"><span class="nav-icon" aria-hidden="true">⌂</span><span class="nav-label">Dashboard</span></button>'+modules.map(m=>'<button data-page="'+m.id+'" class="'+(page===m.id?'active':'')+'"><span class="nav-icon" aria-hidden="true">'+m.icon+'</span><span class="nav-label">'+m.name+'</span></button>').join('');document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{page=b.dataset.page;render()});const root=document.getElementById('content');if(page==='home'){root.innerHTML='<h1>Welcome to your world, Ahmed.</h1><p>One space to study, create, organize, and build your future.</p><section class="hero"><div class="eyebrow">TODAY IS A NEW OPPORTUNITY</div><h2>Make today count.</h2><p>Learn something. Create something. Move forward.</p></section><div class="grid">'+modules.filter(m=>m.id!=='projects').map(m=>'<article class="card" data-open="'+m.id+'"><div class="symbol">'+m.icon+'</div><h3>'+m.name+'</h3><p>'+m.desc+'</p><p class="small">'+((all()[m.id]||[]).length)+' saved entries</p></article>').join('')+'</div><button type="button" class="panel idea-launcher" data-open="projects" aria-label="Open Ahmed&#39;s Projects"><span class="idea-launcher-icon" aria-hidden="true">💡</span><span class="idea-launcher-label"><strong>Ahmed&#39;s Projects</strong><small>Ideas, notes and things to build</small></span><span class="idea-launcher-arrow" aria-hidden="true">→</span></button>';document.querySelectorAll('[data-open]').forEach(e=>e.onclick=()=>{page=e.dataset.open;render()});return}const m=modules.find(x=>x.id===page),entries=(all()[page]||[]);root.innerHTML='<h1>'+m.icon+' '+m.name+'</h1><p>'+m.desc+'</p><div class="toolbar"><button class="primary" id="add">'+(page==='projects'?'+ New idea':'+ New entry')+'</button><button class="secondary" id="export">Export JSON</button><span class="chip">'+entries.length+' entries</span></div><div class="panel" style="margin-bottom:16px"><strong>YOUR SPACE</strong><p>'+m.hint+'</p></div><div class="items">'+(entries.length?entries.map(x=>'<div class="item"><div><strong>'+esc(x.title)+'</strong><small>'+esc(x.date||'No date')+'</small><p class="small" style="white-space:pre-wrap">'+esc(x.details)+'</p></div><div class="actions"><button class="secondary" data-edit="'+x.id+'">Edit</button><button class="secondary danger" data-delete="'+x.id+'">Delete</button></div></div>').join(''):'<div class="empty">'+(page==='projects'?'No ideas yet. Add your first project idea.':'Nothing here yet. Add your first entry.')+'</div>')+'</div>';document.getElementById('add').onclick=()=>show();document.getElementById('export').onclick=()=>{const blob=new Blob([JSON.stringify(entries,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ahmed-'+page+'.json';a.click();URL.revokeObjectURL(a.href)};document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>show(b.dataset.edit));document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{if(confirm('Delete this entry?')){const db=all();db[page]=(db[page]||[]).filter(x=>x.id!==b.dataset.delete);save(db);render()}})}
+function show(id){editing=id||null;const x=(all()[page]||[]).find(v=>v.id===id)||{};document.getElementById('modalTitle').textContent=id?(page==='projects'?'Edit idea':'Edit entry'):(page==='projects'?'New idea':'New entry');document.getElementById('entryTitle').value=x.title||'';document.getElementById('entryDate').value=x.date||'';document.getElementById('entryDetails').value=x.details||'';document.getElementById('modal').classList.add('show');document.getElementById('entryTitle').focus()}function hide(){document.getElementById('modal').classList.remove('show')}document.getElementById('cancel').onclick=hide;document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')hide()};document.getElementById('entryForm').onsubmit=e=>{e.preventDefault();const db=all();db[page]||=[];const x={id:editing||crypto.randomUUID(),title:document.getElementById('entryTitle').value.trim(),date:document.getElementById('entryDate').value,details:document.getElementById('entryDetails').value,updatedAt:new Date().toISOString()};if(!x.title)return;if(editing)db[page]=db[page].map(v=>v.id===editing?x:v);else db[page].unshift(x);save(db);hide();render()};document.getElementById('clock').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dubai',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date())+' · Dubai';render();
+</script><style>
+.writer-head{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}.writer-sub{font-size:14px;margin:5px 0 18px}.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:22px}.book-card{border:1px solid #e5e6dc;border-radius:16px;padding:0;background:#fff;text-align:left;overflow:hidden;cursor:pointer;box-shadow:0 4px 12px #263a3108}.book-card:hover{transform:translateY(-2px)}.book-cover{min-height:220px;background:linear-gradient(150deg,#30493c,#677f66);padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:#f6f2e7}.book-card:nth-child(even) .book-cover{background:linear-gradient(145deg,#756856,#baaa8b)}.book-cover small{letter-spacing:2px;font-size:10px;opacity:.85}.book-cover strong{font-family:Georgia,serif;font-size:26px;font-weight:500;overflow-wrap:anywhere}.book-info{padding:18px}.book-info h3{margin:0 0 8px}.book-info p{margin:0;font-size:12px}.book-tools{display:flex;gap:9px;flex-wrap:wrap}.writer-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;margin-top:20px}.writer-sidebar{background:#fff;border:1px solid #e7e9e1;border-radius:16px;padding:15px;height:fit-content}.writer-sidebar h3{margin:0 0 12px}.chapter-choice{display:block;width:100%;border:0;text-align:left;border-radius:9px;background:transparent;padding:13px 11px;color:#3d5447;margin:3px 0}.chapter-choice.selected{background:#e3ebdf}.chapter-choice span{display:block;font-weight:700}.chapter-choice small{color:#819084;font-size:11px}.writer-editor{background:#fff;border:1px solid #e7e9e1;border-radius:16px;padding:25px;min-width:0}.editor-title{font-size:26px;font-weight:700;letter-spacing:-.6px;background:transparent;border:0;border-bottom:1px solid #e5e8e1;width:100%;outline:none;padding:10px 0;color:#263a31}.editor-title:disabled{opacity:1;color:#263a31}.editor-text{font-family:Georgia,serif;font-size:19px;line-height:1.85;min-height:370px;resize:vertical;width:100%;border:0;outline:0;padding:16px 4px;background:transparent;color:#293b32}.editor-text:disabled{opacity:1;color:#293b32}.writer-meta{font-size:12px;color:#79887c;margin:12px 0;display:flex;gap:16px;flex-wrap:wrap}.writer-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.writer-tabs button{border:0;border-radius:9px;background:#edf0e9;color:#465c4d;padding:8px 11px}.writer-tabs button.current{background:#365543;color:white}.writer-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}.writer-note{font-size:12px;color:#7d8a7e}.revision-list{background:#f2f4ed;border-radius:10px;padding:12px;margin-top:15px}.revision-list button{margin:4px 4px 4px 0}.writer-empty{text-align:center;padding:65px 15px;color:#819083;border:1px dashed #d9dfd5;border-radius:14px}.writer-modal-label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}.writer-inline{border:1px solid #d6ddd2;border-radius:8px;padding:10px;width:100%;font:inherit;background:#fff}.writer-mini{font-size:11px;color:#88968b}.writer-danger{background:#f8eae8;color:#9b4540}.writer-section-title{font-weight:750;margin:16px 0 8px}@media(max-width:850px){.writer-layout{grid-template-columns:1fr}.writer-sidebar{padding:12px}.writer-editor{padding:15px}.editor-text{font-size:17px;min-height:340px}.book-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}}
+</style><script>
+(function(){
+const KEY='ahmed-writing-books-v2';const oldRender=render;
+let bookId=null,chapterId=null,tab='chapters',editingWriting=false,draftTimer=null;
+const W=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}};
+const persist=v=>{try{localStorage.setItem(KEY,JSON.stringify(v));return true}catch(e){alert('Storage full or unavailable. Export your work before continuing.');return false}};
+const findBook=()=>W().find(b=>b.id===bookId);
+const findChapter=()=>findBook()?.sections?.find(x=>x.id===chapterId);
+const when=()=>new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dubai',dateStyle:'medium',timeStyle:'short'}).format(new Date());
+const count=s=>(String(s||'').trim().match(/\S+/gu)||[]).length;
+const defaultSections=()=>[{id:crypto.randomUUID(),title:'Chapter 1',kind:'chapters',body:'',rev:1,history:[],updated:new Date().toISOString()}];
+function paintWriting(){
+const el=document.getElementById('content');
+if(!bookId){
+const books=W();
+el.innerHTML='<div class="writer-head"><div><div class="eyebrow">AHMED LIFE LAB · CREATIVE SPACE</div><h1>Writing Studio</h1><p class="writer-sub">Your stories start here. Make a book, open a chapter, and keep writing.</p></div><div class="book-tools"><button class="secondary" id="importBook">Import story backup</button><input type="file" id="importFile" accept=".json,application/json" style="display:none"><button class="primary" id="newBook">+ New story</button></div></div><div class="book-grid">'+books.map((b,i)=>'<button class="book-card" data-book="'+esc(b.id)+'"><div class="book-cover"><small>AHMED · BOOK '+String(i+1).padStart(2,'0')+'</small><strong dir="auto">'+esc(b.title)+'</strong><small>✎ &nbsp; YOUR STORY</small></div><div class="book-info"><h3 dir="auto">'+esc(b.title)+'</h3><p>'+esc(b.description||'A story in progress')+'</p><p style="margin-top:8px">'+b.sections.filter(s=>s.kind==='chapters').length+' chapters · '+b.sections.reduce((a,s)=>a+count(s.body),0)+' words</p></div></button>').join('')+'</div>'+(books.length?'':'<div class="writer-empty" style="margin-top:20px">Your bookshelf is empty. Create your first story together.</div>')+'<div class="notice">Your writing is saved in this browser only. Export backups regularly. Collaboration between Dubai and Florida will require the separate cloud database.</div>';
+document.getElementById('importBook').onclick=()=>document.getElementById('importFile').click();
+document.getElementById('importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;if(f.size>8*1024*1024){alert('File too large; use a JSON book backup under 8 MB.');return}try{const value=JSON.parse(await f.text());if(!value||typeof value.title!=='string'||!Array.isArray(value.sections)||value.sections.length>400||value.sections.some(x=>typeof x.title!=='string'||typeof x.body!=='string'||x.body.length>1200000)){throw Error('Invalid story backup')}const book={id:crypto.randomUUID(),title:value.title.slice(0,180),description:String(value.description||'').slice(0,400),sections:value.sections.map(x=>({id:crypto.randomUUID(),title:x.title.slice(0,180),kind:['chapters','outline','characters','notes'].includes(x.kind)?x.kind:'chapters',body:x.body,rev:1,history:[],updated:new Date().toISOString()})),created:new Date().toISOString()};const all=W();all.push(book);if(persist(all)){bookId=book.id;chapterId=book.sections.find(s=>s.kind==='chapters')?.id||null;tab='chapters';editingWriting=false;paintWriting();alert('Story imported on this device. Remember to export a backup after making changes.')}}catch(err){alert('Could not import this story. Select an Ahmed Life Lab JSON story backup.')}};
+document.getElementById('newBook').onclick=()=>{const title=prompt('What is the name of your story?');if(!title?.trim())return;const summary=prompt('Short description (optional)')||'';const db=W(),b={id:crypto.randomUUID(),title:title.trim().slice(0,180),description:summary.slice(0,400),sections:defaultSections(),created:new Date().toISOString()};db.push(b);if(persist(db)){bookId=b.id;chapterId=b.sections[0].id;tab='chapters';editingWriting=false;paintWriting()}};
+el.querySelectorAll('[data-book]').forEach(n=>n.onclick=()=>{bookId=n.dataset.book;tab='chapters';chapterId=findBook()?.sections.find(s=>s.kind==='chapters')?.id||null;editingWriting=false;paintWriting()});return}
+const b=findBook();if(!b){bookId=null;return paintWriting()}
+const filtered=b.sections.filter(s=>s.kind===tab);if(!filtered.some(s=>s.id===chapterId))chapterId=filtered[0]?.id||null;
+const item=findChapter();
+el.innerHTML='<div class="writer-head"><div><div class="eyebrow">WRITING STUDIO · '+esc(b.title)+'</div><h1 dir="auto">'+esc(b.title)+'</h1><p class="writer-sub">'+esc(b.description||'Your writing workspace')+'</p></div><div class="book-tools"><button class="secondary" id="backBooks">← Bookshelf</button><button class="secondary" id="renameBook">Rename</button><button class="secondary" id="exportBook">Export</button><button class="secondary" id="printBook">Print</button></div></div><div class="writer-tabs">'+[['chapters','Chapters'],['outline','Story outline'],['characters','Characters'],['notes','Notes']].map(([k,n])=>'<button data-tab="'+k+'" class="'+(tab===k?'current':'')+'">'+n+'</button>').join('')+'</div><div class="writer-layout"><div class="writer-sidebar"><div class="writer-head"><h3>'+({'chapters':'Chapters','outline':'Outline','characters':'Characters','notes':'Notes'}[tab])+'</h3><button class="secondary" id="addSection">+ New</button></div><div>'+filtered.map((s,i)=>'<button class="chapter-choice '+(s.id===chapterId?'selected':'')+'" data-section="'+esc(s.id)+'"><span dir="auto">'+esc(s.title)+'</span><small>v'+s.rev+' · '+count(s.body)+' words</small></button>').join('')+'</div></div><div class="writer-editor" id="editingSurface">'+(item?'<div class="eyebrow">AHMED WRITING DESK · '+esc(tab.toUpperCase())+'</div><input id="writerTitle" class="editor-title" dir="auto" maxlength="180" value="'+esc(item.title)+'" '+(!editingWriting?'disabled':'')+'><div class="writer-meta"><span id="wordCounter">'+count(item.body)+' words</span><span>Revision '+item.rev+'</span><span>Updated '+esc(new Date(item.updated).toLocaleString('en-GB',{timeZone:'Asia/Dubai'}))+' Dubai</span></div><textarea id="writerBody" dir="auto" class="editor-text" spellcheck="true" '+(!editingWriting?'disabled':'')+' placeholder="Once upon a time...">'+esc(item.body)+'</textarea><div class="writer-foot"><button class="primary" id="writerEdit">'+(editingWriting?'Save and protect':'Edit chapter')+'</button><button class="secondary" id="writerCopy">Copy</button><button class="secondary" id="writerHistory">Versions</button><button class="secondary" id="writerDelete">Delete</button><span class="writer-note" id="writerSaveState">'+(editingWriting?'Autosave active':'Protected from accidental edits')+'</span></div><div id="revisionPanel"></div>':'<div class="writer-empty">No entries in this section yet. Press + New to begin.</div>')+'</div></div><div class="notice">Local browser storage only. Your chapter history and edits are not shared to another device. Export your book before clearing browser data.</div>';
+document.getElementById('backBooks').onclick=()=>{saveDraft();bookId=null;chapterId=null;editingWriting=false;paintWriting()};
+document.getElementById('renameBook').onclick=()=>{const name=prompt('Book title',b.title);if(name?.trim()){const db=W(),v=db.find(x=>x.id===bookId);v.title=name.trim().slice(0,180);persist(db);paintWriting()}};
+document.getElementById('exportBook').onclick=()=>{saveDraft();const book=findBook();const opts=confirm('Export the full book as plain text? Choose Cancel for JSON backup.');let data,type,filename;if(opts){data=book.title+'\n\n'+book.sections.filter(s=>s.kind==='chapters').map(s=>s.title+'\n'+s.body).join('\n\n');type='text/plain';filename='ahmed-story.txt'}else{data=JSON.stringify(book,null,2);type='application/json';filename='ahmed-story-backup.json'}const a=document.createElement('a'),url=URL.createObjectURL(new Blob([data],{type}));a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),300)};
+document.getElementById('printBook').onclick=()=>{saveDraft();const book=findBook();const w=window.open('','_blank');if(!w){alert('Allow popups for printing');return}w.document.write('<html><head><title>'+esc(book.title)+'</title><style>body{font-family:Georgia,serif;max-width:750px;margin:50px auto;line-height:1.8;padding:20px;white-space:pre-wrap}h1,h2{line-height:1.4}</style></head><body><h1>'+esc(book.title)+'</h1>'+book.sections.filter(s=>s.kind==='chapters').map(s=>'<h2>'+esc(s.title)+'</h2><div dir="auto">'+esc(s.body)+'</div>').join('')+'</body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),300)};
+el.querySelectorAll('[data-tab]').forEach(n=>n.onclick=()=>{saveDraft();tab=n.dataset.tab;chapterId=null;editingWriting=false;paintWriting()});
+el.querySelectorAll('[data-section]').forEach(n=>n.onclick=()=>{saveDraft();chapterId=n.dataset.section;editingWriting=false;paintWriting()});
+document.getElementById('addSection').onclick=()=>{saveDraft();const defaultTitle=tab==='chapters'?'Chapter '+(filtered.length+1):tab==='characters'?'New character':tab==='outline'?'Story outline':'New note';const name=prompt('Title',defaultTitle);if(!name?.trim())return;const db=W(),b=db.find(x=>x.id===bookId),entry={id:crypto.randomUUID(),title:name.trim().slice(0,180),kind:tab,body:'',rev:1,history:[],updated:new Date().toISOString()};b.sections.push(entry);if(persist(db)){chapterId=entry.id;editingWriting=true;paintWriting()}};
+if(!item)return;
+const titleInput=document.getElementById('writerTitle'),bodyInput=document.getElementById('writerBody');
+document.getElementById('writerEdit').onclick=()=>{if(editingWriting){saveDraft(true);editingWriting=false}else editingWriting=true;paintWriting()};
+document.getElementById('writerCopy').onclick=()=>{const text=titleInput.value+'\n\n'+bodyInput.value;navigator.clipboard?.writeText(text).then(()=>alert('Copied'))?.catch(()=>alert('Could not copy'));};
+document.getElementById('writerDelete').onclick=()=>{if(!confirm('Delete this chapter or note? This cannot be undone.'))return;const db=W(),bk=db.find(x=>x.id===bookId);bk.sections=bk.sections.filter(s=>s.id!==chapterId);persist(db);chapterId=null;editingWriting=false;paintWriting()};
+document.getElementById('writerHistory').onclick=()=>{const list=findChapter()?.history||[];document.getElementById('revisionPanel').innerHTML='<div class="revision-list"><strong>Previous saved versions</strong><p class="small">Restore a version to the editor to review it, then save as a new revision.</p>'+(list.length?list.slice().reverse().map((x,i)=>'<div><button class="secondary" data-restore="'+(list.length-1-i)+'">v'+x.rev+' · '+esc(x.at)+'</button></div>').join(''):'<p>No older versions yet.</p>')+'</div>';document.querySelectorAll('[data-restore]').forEach(x=>x.onclick=()=>{if(!confirm('Load this earlier version into the editor?'))return;const d=findChapter().history[+x.dataset.restore];editingWriting=true;paintWriting();document.getElementById('writerTitle').value=d.title;document.getElementById('writerBody').value=d.body;document.getElementById('wordCounter').textContent=count(d.body)+' words';})};
+bodyInput.oninput=titleInput.oninput=()=>{document.getElementById('wordCounter').textContent=count(bodyInput.value)+' words';document.getElementById('writerSaveState').textContent='Unsaved changes';clearTimeout(draftTimer);draftTimer=setTimeout(()=>saveDraft(),1200)};
+}
+function saveDraft(force){if(!editingWriting||!bookId||!chapterId)return;const t=document.getElementById('writerTitle'),body=document.getElementById('writerBody');if(!t||!body)return;const db=W(),bk=db.find(x=>x.id===bookId),s=bk?.sections.find(x=>x.id===chapterId);if(!s)return;const name=t.value.trim()||s.title;if(name===s.title&&body.value===s.body){if(force)document.getElementById('writerSaveState').textContent='Saved';return}const stamp=when();s.history=s.history||[];s.history.push({rev:s.rev,at:stamp,title:s.title,body:s.body});if(s.history.length>30)s.history.shift();s.rev=(s.rev||1)+1;s.title=name;s.body=body.value;s.updated=new Date().toISOString();if(persist(db)){const state=document.getElementById('writerSaveState');if(state)state.textContent='Saved '+stamp;}}
+// The shared brand returns home without reloading or losing an open chapter.
+document.getElementById('ahmedHome').addEventListener('click',event=>{
+if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+event.preventDefault();
+const body=document.getElementById('writerBody'),title=document.getElementById('writerTitle');
+if(editingWriting&&body&&title){
+const current=findChapter();if(!current)return;
+const wantedTitle=title.value.trim()||current.title,wantedBody=body.value;
+saveDraft(true);
+const saved=findChapter();
+if(!saved||saved.title!==wantedTitle||saved.body!==wantedBody)return;
+}
+clearTimeout(draftTimer);editingWriting=false;page='home';hide();render();
+window.scrollTo({top:0,left:0,behavior:'auto'});
+});
+render=function(){oldRender();if(page==='writing')paintWriting()};render();window.addEventListener('beforeunload',()=>saveDraft());
+})();
+</script><script>
+(function(){
+"use strict";
+const prior=render, MONTH=["January","February","March","April","May","June","July","August","September","October","November","December"], DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], TYPES=["Personal","University","Sports","Health","Travel","Car","Other"];
+let today=nowDubai(),chosen=today,focus=today,view="month",filter="all",editId=null;
+function nowDubai(){
+ const p=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Dubai",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+ const x=Object.fromEntries(p.map(t=>[t.type,t.value]));
+ return x.year+"-"+x.month+"-"+x.day;
+}
+function z(n){return String(n).padStart(2,"0")}
+function mk(s){const a=(s||today).split("-").map(Number);return new Date(Date.UTC(a[0],a[1]-1,a[2],12))}
+function dateKey(d){return d.getUTCFullYear()+"-"+z(d.getUTCMonth()+1)+"-"+z(d.getUTCDate())}
+function addDate(s,n){const d=mk(s);d.setUTCDate(d.getUTCDate()+n);return dateKey(d)}
+function monStart(s){return addDate(s,-((mk(s).getUTCDay()+6)%7))}
+function daysMonth(y,m){return new Date(Date.UTC(y,m+1,0,12)).getUTCDate()}
+function setMonth(y,m){const d=mk(chosen);const day=d.getUTCDate(),v=new Date(Date.UTC(y,m,Math.min(day,daysMonth(y,m)),12));focus=chosen=dateKey(v)}
+function clean(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function human(s){return new Intl.DateTimeFormat("en-GB",{timeZone:"UTC",weekday:"short",day:"numeric",month:"long",year:"numeric"}).format(mk(s))}
+function short(s){return new Intl.DateTimeFormat("en-GB",{timeZone:"UTC",weekday:"short",day:"numeric",month:"short"}).format(mk(s))}
+function entries(){
+ const db=all(),life=Array.isArray(db.life)?db.life:[],uni=Array.isArray(db.university)?db.university:[];
+ return [...life.map(x=>({...x,kind:x.kind||"task",date:x.date||x.due||"",source:"life"})),...uni.filter(x=>x.date).map(x=>({...x,kind:"assignment",source:"university",priority:"Low"}))];
+}
+function pr(x){let p=String(x.priority||"Normal").toLowerCase();return ["urgent","high","normal","low"].includes(p)?p:"normal"}
+function onScreen(x){return filter==="all"||pr(x)===filter}
+function dated(s){return entries().filter(x=>x.date===s&&onScreen(x)).sort((a,b)=>(a.time||"99:99").localeCompare(b.time||"99:99"))}
+function chip(x){return '<button class="ahc-chip '+pr(x)+(x.source==="university"?" university":"")+(x.done?" done":"")+'" data-openitem="'+clean(x.id)+'" data-origin="'+x.source+'" title="'+clean(x.title)+'">'+(x.time?clean(x.time)+" ":"")+clean(x.title)+'</button>'}
+function month(y,m){
+ const skip=(new Date(Date.UTC(y,m,1,12)).getUTCDay()+6)%7, out=[];
+ for(let i=0;i<42;i++){
+  const d=dateKey(new Date(Date.UTC(y,m,i+1-skip,12))), items=dated(d), outside=mk(d).getUTCMonth()!==m;
+  out.push('<div class="ahc-cell'+(outside?" outside":"")+(d===chosen?" selected":"")+(d===today?" today":"")+'"><div class="ahc-number-line"><button class="ahc-number" data-date="'+d+'" aria-label="'+clean(human(d))+'">'+mk(d).getUTCDate()+'</button></div><div class="ahc-chips">'+items.slice(0,3).map(chip).join("")+(items.length>3?'<span class="ahc-more">+'+(items.length-3)+'</span>':"")+'</div></div>');
+ }
+ return '<div class="ahc-month"><div class="ahc-week-head">'+DAYS.map(x=>'<span>'+x+'</span>').join("")+'</div><div class="ahc-month-grid">'+out.join("")+'</div></div>';
+}
+function week(){
+ const first=monStart(focus), cols=[];
+ for(let i=0;i<7;i++){
+  const d=addDate(first,i),items=dated(d);
+  cols.push('<div class="ahc-week-col'+(d===chosen?" selected":"")+'"><button data-date="'+d+'">'+clean(short(d))+'</button>'+items.slice(0,8).map(chip).join("")+(items.length>8?'<div class="ahc-more">+'+(items.length-8)+'</div>':"")+'</div>');
+ }
+ return '<div class="ahc-week">'+cols.join("")+'</div>';
+}
+function year(y){
+ const cards=[];
+ for(let m=0;m<12;m++){
+  const offset=(new Date(Date.UTC(y,m,1,12)).getUTCDay()+6)%7, cells=[];
+  for(let i=0;i<offset;i++)cells.push("<span></span>");
+  for(let d=1;d<=daysMonth(y,m);d++){
+   const dt=y+"-"+z(m+1)+"-"+z(d);
+   cells.push('<button class="'+(dated(dt).length?"has ":"")+(dt===today?"today":"")+'" data-date="'+dt+'" title="'+clean(human(dt))+'">'+d+'</button>');
+  }
+  cards.push('<div class="ahc-mini"><button class="ahc-mini-title" data-month="'+m+'">'+MONTH[m]+'</button><div class="ahc-mini-grid">'+DAYS.map(x=>'<span>'+x.charAt(0)+'</span>').join("")+cells.join("")+'</div></div>');
+ }
+ return '<div class="ahc-year">'+cards.join("")+'</div>';
+}
+function line(x){
+ const university=x.source==="university",label=university?"University assignment":x.kind==="event"?"Event":"Task";
+ const time=x.time?x.time+(x.endTime?" to "+x.endTime:"")+" · ":"";
+ const secondary=time+label+(x.priority?" · "+x.priority:"");
+ return '<article class="ahc-entry '+pr(x)+(university?" university":"")+(x.done?" done":"")+'"><div class="ahc-details"><strong>'+clean(x.title)+'</strong><small>'+clean(secondary)+'</small>'+(x.details?'<small>'+clean(x.details)+'</small>':"")+'</div><div class="ahc-entry-tools">'+(!university&&x.kind!=="event"?'<input type="checkbox" data-check="'+clean(x.id)+'" '+(x.done?"checked":"")+' aria-label="Complete '+clean(x.title)+'">':"")+'<button data-openitem="'+clean(x.id)+'" data-origin="'+x.source+'">'+(university?"View":"Edit")+'</button></div></article>';
+}
+function dayPanel(d,heading=true){
+ const items=dated(d);
+ return '<section class="ahc-agenda">'+(heading?'<div class="ahc-agenda-head"><h2>'+clean(human(d))+'</h2><button class="ahc-btn" data-adddate="'+d+'">+ Add</button></div>':"")+'<div class="ahc-agenda-list">'+(items.length?items.map(line).join(""):'<p class="ahc-empty">Nothing on this date. Add an event or task.</p>')+'</div></section>';
+}
+function noDate(){
+ const items=entries().filter(x=>x.source==="life"&&!x.date&&x.kind!=="event"&&onScreen(x));
+ return items.length?'<section class="ahc-agenda"><div class="ahc-agenda-head"><h2>Tasks without a date</h2></div><div class="ahc-agenda-list">'+items.map(line).join("")+'</div></section>':"";
+}
+function ensureForm(){
+ if(document.getElementById("ahcOverlay"))return;
+ const div=document.createElement("div");div.id="ahcOverlay";div.className="ahc-overlay";div.setAttribute("role","dialog");div.setAttribute("aria-modal","true");div.setAttribute("aria-labelledby","ahcFormTitle");
+ div.innerHTML='<div class="ahc-dialog"><h2 id="ahcFormTitle">New event</h2><form id="ahcForm"><div class="ahc-form-grid"><div><label for="ahcKind">Type</label><select id="ahcKind"><option value="event">Event</option><option value="task">Task</option></select></div><div><label for="ahcPriority">Priority</label><select id="ahcPriority"><option>Normal</option><option>Urgent</option><option>High</option><option>Low</option></select></div></div><label for="ahcTitle">Title</label><input id="ahcTitle" required maxlength="160"><div class="ahc-form-grid"><div><label for="ahcDate">Date</label><input id="ahcDate" type="date"></div><div><label for="ahcCategory">Category</label><select id="ahcCategory">'+TYPES.map(x=>'<option>'+x+'</option>').join("")+'</select></div><div><label for="ahcTime">Start time</label><input id="ahcTime" type="time"></div><div><label for="ahcEnd">End time</label><input id="ahcEnd" type="time"></div></div><label for="ahcDetails">Notes</label><textarea id="ahcDetails"></textarea><label id="ahcCompleteLabel"><input type="checkbox" id="ahcComplete"> Completed task</label><div class="ahc-modal-actions"><button type="button" class="ahc-btn" id="ahcRemove" hidden>Delete</button><button type="button" class="ahc-btn" id="ahcCancel">Cancel</button><button type="submit" class="ahc-btn active">Save</button></div></form></div>';
+ document.body.appendChild(div);
+ div.addEventListener("click",e=>{if(e.target===div)close()});
+ document.getElementById("ahcCancel").onclick=close;
+ document.getElementById("ahcKind").onchange=syncForm;
+ document.getElementById("ahcRemove").onclick=remove;
+ document.getElementById("ahcForm").onsubmit=submit;
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&div.classList.contains("show"))close()});
+}
+function syncForm(){
+ const task=document.getElementById("ahcKind").value==="task";
+ document.getElementById("ahcCompleteLabel").style.display=task?"block":"none";
+ document.getElementById("ahcDate").required=!task;
+}
+function openForm(type="event",id=null,d=chosen){
+ ensureForm();editId=id;
+ const x=id?entries().find(v=>v.id===id&&v.source==="life"):null;
+ document.getElementById("ahcFormTitle").textContent=x?"Edit "+(x.kind==="event"?"event":"task"):"Add "+type;
+ document.getElementById("ahcKind").value=x?.kind==="event"?"event":x?"task":type;
+ document.getElementById("ahcTitle").value=x?.title||"";
+ document.getElementById("ahcPriority").value=["Normal","Urgent","High","Low"].includes(x?.priority)?x.priority:"Normal";
+ document.getElementById("ahcCategory").value=TYPES.includes(x?.category)?x.category:"Personal";
+ document.getElementById("ahcDate").value=x?.date||d||"";
+ document.getElementById("ahcTime").value=x?.time||"";
+ document.getElementById("ahcEnd").value=x?.endTime||"";
+ document.getElementById("ahcDetails").value=x?.details||"";
+ document.getElementById("ahcComplete").checked=!!x?.done;
+ document.getElementById("ahcRemove").hidden=!x;
+ syncForm();document.getElementById("ahcOverlay").classList.add("show");
+ document.getElementById("ahcTitle").focus();
+}
+function close(){document.getElementById("ahcOverlay")?.classList.remove("show");editId=null}
+function submit(e){
+ e.preventDefault();
+ const title=document.getElementById("ahcTitle").value.trim(),kind=document.getElementById("ahcKind").value,dt=document.getElementById("ahcDate").value,tm=document.getElementById("ahcTime").value,en=document.getElementById("ahcEnd").value;
+ if(!title)return;
+ if(kind==="event"&&!dt){alert("Enter an event date.");return}
+ if(tm&&en&&en<tm){alert("The end time must be after the start time.");return}
+ const data=all();if(!Array.isArray(data.life))data.life=[];
+ const ix=data.life.findIndex(x=>x.id===editId),old=ix>=0?data.life[ix]:null;
+ const record={...old,id:old?.id||crypto.randomUUID(),title,kind,date:dt,time:tm,endTime:en,details:document.getElementById("ahcDetails").value,priority:document.getElementById("ahcPriority").value,category:document.getElementById("ahcCategory").value,done:kind==="task"&&document.getElementById("ahcComplete").checked,updatedAt:new Date().toISOString()};
+ if(ix>=0)data.life[ix]=record;else data.life.unshift(record);
+ try{save(data)}catch{alert("Saving failed. Please export your notes or free browser storage.");return}
+ close();if(dt)focus=chosen=dt;paint();
+}
+function remove(){
+ if(!editId||!confirm("Delete this item?"))return;
+ const data=all();data.life=(data.life||[]).filter(x=>x.id!==editId);
+ try{save(data)}catch{alert("Unable to save changes.");return}
+ close();paint();
+}
+function complete(id,val){
+ const data=all(),x=(data.life||[]).find(x=>x.id===id);if(!x)return;
+ x.done=val;x.updatedAt=new Date().toISOString();
+ try{save(data)}catch{alert("Unable to save task.");return}
+ paint();
+}
+function advance(n){
+ const d=mk(focus);
+ if(view==="year")d.setUTCFullYear(d.getUTCFullYear()+n);
+ else if(view==="month"){setMonth(d.getUTCFullYear(),d.getUTCMonth()+n);paint();return}
+ else d.setUTCDate(d.getUTCDate()+(view==="week"?7:1)*n);
+ chosen=focus=dateKey(d);paint();
+}
+function paint(){
+ if(page!=="life")return;
+ today=nowDubai();
+ const d=mk(focus),y=d.getUTCFullYear(),m=d.getUTCMonth(),end=addDate(monStart(focus),6);
+ const heading=view==="year"?"Year "+y:view==="week"?short(monStart(focus))+" to "+short(end):view==="day"?human(focus):MONTH[m]+" "+y;
+ const monthSelect='<select id="ahcMonth" class="ahc-select" aria-label="Month">'+MONTH.map((x,i)=>'<option value="'+i+'" '+(i===m?"selected":"")+'>'+x+'</option>').join("")+'</select>';
+ const yearSelect='<select id="ahcYear" class="ahc-select" aria-label="Year">'+Array.from({length:31},(_,i)=>2020+i).map(i=>'<option '+(i===y?"selected":"")+' value="'+i+'">'+i+'</option>').join("")+'</select>';
+ const views=['month','week','day'].map(v=>'<button class="ahc-btn'+(view===v?" active":"")+'" data-view="'+v+'">'+v.charAt(0).toUpperCase()+v.slice(1)+'</button>').join("");
+ const header='<header class="ahc-header"><div><div class="ahc-kicker">PERSONAL CALENDAR · DUBAI TIME</div><h1>Life Organizer</h1><p>Events, tasks, routines and university deadlines</p></div><div class="ahc-tools"><button class="ahc-btn" data-add="task">Add task</button><button class="ahc-btn active" data-add="event">Add event</button><button class="ahc-btn" id="ahcPrint">Print / PDF</button></div></header>';
+ const controls='<div class="ahc-caption">'+clean(heading)+'</div><div class="ahc-controls"><div class="ahc-fields">'+monthSelect+yearSelect+'</div><div class="ahc-pager"><button class="ahc-btn arrow" data-prev="-1" aria-label="Previous">‹</button><button class="ahc-btn" id="ahcToday">Today</button><button class="ahc-btn arrow" data-prev="1" aria-label="Next">›</button></div><div class="ahc-views">'+views+'</div></div><div class="ahc-yearbar"><button class="ahc-btn'+(view==="year"?" active":"")+'" data-view="year">Year</button><small class="ahc-hint">Tap any date to see its events and tasks</small></div>';
+ const priorities='<div class="ahc-legend">'+["Urgent","High","Normal","Low"].map(x=>'<button class="ahc-pri '+x.toLowerCase()+(filter===x.toLowerCase()?" picked":"")+'" data-pri="'+x.toLowerCase()+'" aria-pressed="'+(filter===x.toLowerCase())+'">'+x+'</button>').join("")+'</div><p class="ahc-hint">Priority colors · Tap a color to filter, or tap it again to reset.</p>';
+ const body=view==="month"?month(y,m):view==="week"?week():view==="year"?year(y):dayPanel(focus);
+ const agenda=view==="day"?"":dayPanel(chosen);
+ const root=document.getElementById("content");
+ root.innerHTML='<div class="ahc">'+header+controls+priorities+body+agenda+noDate()+'<div class="ahc-footnote">Saved locally on this device. Calendar synchronization, phone reminders and cloud backup are not enabled yet.</div></div>';
+ const banner=document.querySelector("main>.notice");if(banner)banner.hidden=true;
+ root.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>{view=b.dataset.view;paint()});
+ root.querySelectorAll("[data-pri]").forEach(b=>b.onclick=()=>{filter=filter===b.dataset.pri?"all":b.dataset.pri;paint()});
+ root.querySelectorAll("[data-date]").forEach(b=>b.onclick=()=>{chosen=focus=b.dataset.date;if(view==="year")view="day";paint()});
+ root.querySelectorAll("[data-month]").forEach(b=>b.onclick=()=>{setMonth(y,Number(b.dataset.month));view="month";paint()});
+ root.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>openForm(b.dataset.add));
+ root.querySelectorAll("[data-adddate]").forEach(b=>b.onclick=()=>openForm("event",null,b.dataset.adddate));
+ root.querySelectorAll("[data-openitem]").forEach(b=>b.onclick=()=>{if(b.dataset.origin==="university"){page="university";render()}else openForm("task",b.dataset.openitem)});
+ root.querySelectorAll("[data-check]").forEach(b=>b.onchange=()=>complete(b.dataset.check,b.checked));
+ root.querySelectorAll("[data-prev]").forEach(b=>b.onclick=()=>advance(Number(b.dataset.prev)));
+ document.getElementById("ahcToday").onclick=()=>{chosen=focus=nowDubai();paint()};
+ document.getElementById("ahcPrint").onclick=()=>window.print();
+ document.getElementById("ahcMonth").onchange=e=>{setMonth(y,Number(e.target.value));paint()};
+ document.getElementById("ahcYear").onchange=e=>{setMonth(Number(e.target.value),m);paint()};
+}
+render=function(){
+ prior();
+ const banner=document.querySelector("main>.notice");if(banner)banner.hidden=page==="life";
+ if(page==="life")paint();
+};
+render();
+})();
+</script>
+<script>(function installAhmedDashboard(){
+  "use strict";
+  const oldRender=render;
+  const NOTE_KEY="ahmed-daily-notes-v1";
+  const TIMEZONE="Asia/Dubai";
+  let showCompleted=false, allTasks=false, noteArchive=false, ordering="priority",editingNoteId=null;
+  const modulesForShortcuts=[["university","🎓","University"],["writing","✍️","Writing Studio"],["life","📅","Calendar"],["sports","🏃","Sports"],["car","🚙","Car Planner"],["coding","⌘","Coding Lab"],["projects","💡","Ahmed's Projects"]];
+  function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+  function todayDubai(){
+    const parts=new Intl.DateTimeFormat("en-US",{timeZone:TIMEZONE,year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
+    const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));
+    return p.year+"-"+p.month+"-"+p.day;
+  }
+  function dubaiDate(){
+    return new Intl.DateTimeFormat("en-GB",{timeZone:TIMEZONE,weekday:"long",day:"numeric",month:"long"}).format(new Date());
+  }
+  function daypart(){
+    const hour=Number(new Intl.DateTimeFormat("en-GB",{timeZone:TIMEZONE,hour:"2-digit",hourCycle:"h23"}).format(new Date()));
+    return hour<12?"Good morning":hour<17?"Good afternoon":"Good evening";
+  }
+  function nextDay(s,n){
+    const [y,m,d]=s.split("-").map(Number);
+    const a=new Date(Date.UTC(y,m-1,d+n,12));
+    return [a.getUTCFullYear(),String(a.getUTCMonth()+1).padStart(2,"0"),String(a.getUTCDate()).padStart(2,"0")].join("-");
+  }
+  function labelDate(s){
+    if(!s)return "No due date";
+    const [y,m,d]=s.split("-").map(Number);
+    if(!y||!m||!d)return "No due date";
+    return new Intl.DateTimeFormat("en-GB",{day:"numeric",month:"short",timeZone:"UTC"}).format(new Date(Date.UTC(y,m-1,d,12)));
+  }
+  function priorities(){return {Urgent:0,High:1,Normal:2,Low:3}}
+  function rank(x){return priorities()[x.priority]??2}
+  function taskData(){
+    const data=all(),life=Array.isArray(data.life)?data.life:[],university=Array.isArray(data.university)?data.university:[];
+    return [
+      ...life.filter(x=>x&&x.title&&!x.archived&&x.kind!=="event").map(x=>({...x,section:"life",due:x.date||x.due||"",category:x.category||"Personal"})),
+      ...university.filter(x=>x&&x.title&&!x.archived&&x.date).map(x=>({...x,section:"university",due:x.date||"",priority:x.priority||"Normal",category:"University"}))
+    ];
+  }
+  function calendarEvents(){
+    const data=all();const arr=Array.isArray(data.life)?data.life:[];
+    const now=todayDubai(),soon=nextDay(now,7);
+    return arr.filter(x=>x&&x.kind==="event"&&x.date>=now&&x.date<=soon&&!x.archived).sort((a,b)=>(a.date+" "+(a.time||"00:00")).localeCompare(b.date+" "+(b.time||"00:00"))).slice(0,3);
+  }
+  function notesRead(){try{const x=JSON.parse(localStorage.getItem(NOTE_KEY)||"[]");return Array.isArray(x)?x:[]}catch{return []}}
+  function notesSave(list){try{localStorage.setItem(NOTE_KEY,JSON.stringify(list));return true}catch{alert("The browser could not save this note. Export important writing before clearing storage.");return false}}
+  function toSection(section){
+    page=section;render();window.scrollTo({top:0,behavior:"auto"});
+  }
+  function launchCalendarTask(){
+    toSection("life");
+    const btn=document.querySelector("#content [data-add='task']");
+    if(btn)btn.click();
+  }
+  function closeNote(){
+    document.getElementById("ahNoteModal")?.classList.remove("show");
+    editingNoteId=null;
+  }
+  function ensureNoteModal(){
+    if(document.getElementById("ahNoteModal"))return;
+    const node=document.createElement("div");
+    node.id="ahNoteModal";node.className="ahd-modal";
+    node.setAttribute("role","dialog");node.setAttribute("aria-modal","true");node.setAttribute("aria-labelledby","ahNoteHeading");
+    node.innerHTML='<div class="ahd-note-dialog"><div class="ahd-note-dialog-head"><h2 id="ahNoteHeading">New note</h2><button type="button" class="ahd-plain-btn" id="ahNoteClose" aria-label="Close note">×</button></div><form id="ahNoteForm"><label for="ahNoteTitle">Note title</label><input id="ahNoteTitle" maxlength="160" placeholder="An idea, plan or reminder" required><label for="ahNoteBody">Details</label><textarea id="ahNoteBody" rows="7" placeholder="Write something you want to remember..."></textarea><div class="ahd-note-dialog-actions"><button type="button" class="ahd-plain-btn" id="ahNoteCancel">Cancel</button><button type="submit" class="ahd-solid-btn">Save note</button></div></form></div>';
+    document.body.appendChild(node);
+    node.onclick=e=>{if(e.target===node)closeNote()};
+    document.getElementById("ahNoteClose").onclick=closeNote;
+    document.getElementById("ahNoteCancel").onclick=closeNote;
+    document.getElementById("ahNoteForm").onsubmit=e=>{
+      e.preventDefault();
+      const title=document.getElementById("ahNoteTitle").value.trim();
+      if(!title)return;
+      const rows=notesRead(),idx=rows.findIndex(x=>x.id===editingNoteId);
+      const old=idx>=0?rows[idx]:null;
+      const item={id:old?.id||crypto.randomUUID(),title:title.slice(0,160),body:document.getElementById("ahNoteBody").value,archived:!!old?.archived,createdAt:old?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};
+      if(idx>=0)rows[idx]=item;else rows.unshift(item);
+      if(notesSave(rows)){closeNote();draw();}
+    };
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&node.classList.contains("show"))closeNote()});
+  }
+  function noteModal(id){
+    ensureNoteModal();
+    const item=notesRead().find(x=>x.id===id);
+    editingNoteId=item?.id||null;
+    document.getElementById("ahNoteHeading").textContent=item?"Edit note":"New note";
+    document.getElementById("ahNoteTitle").value=item?.title||"";
+    document.getElementById("ahNoteBody").value=item?.body||"";
+    document.getElementById("ahNoteModal").classList.add("show");
+    document.getElementById("ahNoteTitle").focus();
+  }
+  function archiveNote(id){
+    const arr=notesRead(),x=arr.find(n=>n.id===id);if(!x)return;
+    x.archived=!x.archived;x.updatedAt=new Date().toISOString();
+    if(notesSave(arr))draw();
+  }
+  function makeTask(id){
+    const note=notesRead().find(x=>x.id===id);if(!note)return;
+    const data=all();if(!Array.isArray(data.life))data.life=[];
+    data.life.unshift({id:crypto.randomUUID(),title:note.title,details:note.body,kind:"task",category:"Personal",priority:"Normal",date:"",done:false,updatedAt:new Date().toISOString()});
+    try{save(data);draw()}catch{alert("Could not save the new task.")}
+  }
+  function completeTask(section,id,value){
+    const data=all(),arr=data[section];if(!Array.isArray(arr))return;
+    const task=arr.find(x=>x.id===id);if(!task)return;
+    task.done=value;task.updatedAt=new Date().toISOString();
+    try{save(data);draw()}catch{alert("Unable to save this task")}
+  }
+  function taskList(today){
+    let tasks=taskData().filter(t=>!!t.done===showCompleted);
+    tasks.sort((a,b)=>{
+      if(ordering==="due"){
+        const ad=a.due||"9999-12-31",bd=b.due||"9999-12-31";
+        return ad.localeCompare(bd)||rank(a)-rank(b)||a.title.localeCompare(b.title);
+      }
+      const status=x=>x.due&&x.due<today?0:x.due===today?1:!x.due?2:3;
+      return status(a)-status(b)||rank(a)-rank(b)||(a.due||"9999").localeCompare(b.due||"9999")||a.title.localeCompare(b.title);
+    });
+    return tasks;
+  }
+  function taskCard(t,today){
+    const overdue=t.due&&t.due<today&&!t.done,now=t.due===today;
+    let status=overdue?"Overdue · "+labelDate(t.due):now?"Due today":t.due?"Due "+labelDate(t.due):"No due date";
+    if(t.done)status="Completed";
+    const priority=["Urgent","High","Normal","Low"].includes(t.priority)?t.priority:"Normal";
+    return `<article class="ahd-task ${safe(priority.toLowerCase())}${t.done?" is-done":""}">
+      <div class="ahd-card-heading"><strong>${safe(t.title)}</strong><span class="ahd-task-tag">${safe(t.section==="university"?"University":t.category||"Personal")}</span></div>
+      ${t.details?`<p class="ahd-description">${safe(t.details)}</p>`:""}
+      <div class="ahd-task-meta"><span class="ahd-priority ${priority.toLowerCase()}">${safe(priority)}</span><span class="${overdue?"ahd-overdue":now?"ahd-due-today":""}">${safe(status)}</span></div>
+      <div class="ahd-task-actions"><button type="button" class="ahd-small-btn ahd-done" data-complete="${safe(t.id)}" data-source="${safe(t.section)}" data-value="${!t.done}">${t.done?"Reopen":"Done"}</button><button type="button" class="ahd-small-btn" data-edit-task="${safe(t.id)}" data-source="${safe(t.section)}">${t.section==="university"?"University":"Edit"}</button></div>
+    </article>`;
+  }
+  function noteCard(note){
+    return `<article class="ahd-note-card"><div class="ahd-card-heading"><strong>${safe(note.title)}</strong><span class="ahd-task-tag">Note</span></div><p class="ahd-note-body">${safe(note.body||"Add a description or your next steps.")}</p><div class="ahd-note-actions"><button type="button" class="ahd-small-btn" data-edit-note="${safe(note.id)}">Edit</button><button type="button" class="ahd-small-btn" data-note-task="${safe(note.id)}">Make task</button><button type="button" class="ahd-small-btn" data-note-archive="${safe(note.id)}">${note.archived?"Restore":"Archive"}</button></div></article>`;
+  }
+  function shortcutIcon(item){
+    return `<button type="button" class="ahd-shortcut" data-route="${safe(item[0])}"><span class="ahd-shortcut-symbol" aria-hidden="true">${item[1]}</span><span>${safe(item[2])}</span><span class="ahd-chev">›</span></button>`;
+  }
+  function draw(){
+    if(page!=="home")return;
+    const today=todayDubai(),data=taskData(),open=data.filter(x=>!x.done),overdue=open.filter(x=>x.due&&x.due<today),due=open.filter(x=>x.due===today);
+    const completed=data.filter(x=>x.done).length;
+    const listed=taskList(today),shown=allTasks?listed:listed.slice(0,5);
+    const rawNotes=notesRead(),displayNotes=rawNotes.filter(n=>!!n.archived===noteArchive).sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)));
+    const upcoming=calendarEvents();
+    const root=document.getElementById("content");
+    if(!root)return;
+    root.innerHTML=`
+      <div class="ahd">
+      <section class="ahd-greeting"><div><div class="ahd-kicker">AHMED LIFE LAB · ${safe(dubaiDate())} · DUBAI</div>
+        <h1>${daypart()}, Ahmed.</h1><p>Your day at a glance. Focus on what matters, then make something new.</p></div>
+        <button type="button" id="ahdOpenCalendar" class="ahd-date-pill">📅 <span>Open calendar</span> ›</button>
+      </section>
+      <section class="ahd-stats" aria-label="Daily summary">
+       <div><strong>${due.length}</strong><span>Due today</span></div>
+       <div><strong>${overdue.length}</strong><span>Overdue</span></div>
+       <div><strong>${open.length}</strong><span>Open tasks</span></div>
+       <div><strong>${upcoming.length}</strong><span>Upcoming events</span></div>
+      </section>
+      <div class="ahd-layout">
+       <div class="ahd-work">
+         <div class="ahd-columns">
+           <section class="ahd-panel ahd-tasks" aria-labelledby="ahdTasksTitle">
+             <div class="ahd-panel-top"><div><div class="ahd-eyebrow">PLAN YOUR DAY</div><h2 id="ahdTasksTitle">Tasks / To do</h2></div><button type="button" class="ahd-solid-btn ahd-add-task" id="ahdAddTask">+ Task</button></div>
+             <div class="ahd-panel-controls">
+               <label for="ahdSort">Sort</label><select id="ahdSort"><option value="priority" ${ordering==="priority"?"selected":""}>Priority</option><option value="due" ${ordering==="due"?"selected":""}>Due date</option></select>
+               <button type="button" id="ahdCompleted" class="ahd-filter ${showCompleted?"on":""}">Completed · ${completed}</button>
+             </div>
+             <div class="ahd-task-list">${shown.length?shown.map(t=>taskCard(t,today)).join(""):`<div class="ahd-empty">${showCompleted?"No completed tasks yet.":"Nothing pending yet. Add your first task or university deadline."}</div>`}</div>
+             ${listed.length>5?`<button type="button" id="ahdMoreTasks" class="ahd-more">${allTasks?"Show fewer":"Show all "+listed.length+" tasks"}</button>`:""}
+           </section>
+           <section class="ahd-panel ahd-notes" aria-labelledby="ahdNotesTitle">
+             <div class="ahd-panel-top"><div><div class="ahd-eyebrow">CAPTURE YOUR IDEAS</div><h2 id="ahdNotesTitle">Notes</h2></div><button type="button" id="ahdAddNote" class="ahd-solid-btn ahd-note-add">+ Note</button></div>
+             <div class="ahd-panel-controls"><span>${rawNotes.filter(n=>!n.archived).length} active notes</span><button type="button" class="ahd-filter ${noteArchive?"on":""}" id="ahdShowArchived">${noteArchive?"Active notes":"Archived"}</button></div>
+             <div class="ahd-note-list">${displayNotes.length?displayNotes.slice(0,6).map(noteCard).join(""):`<div class="ahd-empty">${noteArchive?"No archived notes.":"Keep ideas, reading notes and things you want to build here."}</div>`}</div>
+             ${displayNotes.length>6?`<p class="ahd-note-count">Showing 6 of ${displayNotes.length} notes</p>`:""}
+           </section>
+         </div>
+         <section class="ahd-upcoming"><div class="ahd-upcoming-top"><h2>Coming up</h2><button type="button" id="ahdUpcomingLink" class="ahd-plain-btn">View calendar ›</button></div>
+         <div class="ahd-event-list">${upcoming.length?upcoming.map(x=>`<button type="button" class="ahd-event-chip" data-event-open="life"><span class="ahd-event-date">${safe(labelDate(x.date))}</span><span>${safe(x.time?x.time+" · ":"")}${safe(x.title)}</span></button>`).join(""):"<span class='ahd-upcoming-empty'>No events over the next seven days.</span>"}</div></section>
+       </div>
+       
+      </div>
+      
+      <div class="ahd-local-note">Your tasks and notes currently stay on this device. Shared cloud synchronization isn't connected yet.</div>
+      </div>`;
+    const banner=document.querySelector("main>.notice");if(banner)banner.hidden=true;
+    root.querySelector("#ahdOpenCalendar").onclick=()=>toSection("life");
+    root.querySelector("#ahdAddTask").onclick=launchCalendarTask;
+    root.querySelector("#ahdSort").onchange=e=>{ordering=e.target.value;draw()};
+    root.querySelector("#ahdCompleted").onclick=()=>{showCompleted=!showCompleted;allTasks=false;draw()};
+    root.querySelector("#ahdAddNote").onclick=()=>noteModal(null);
+    root.querySelector("#ahdShowArchived").onclick=()=>{noteArchive=!noteArchive;draw()};
+    root.querySelector("#ahdUpcomingLink").onclick=()=>toSection("life");
+    
+    root.querySelectorAll("[data-event-open]").forEach(b=>b.onclick=()=>toSection("life"));
+    root.querySelectorAll("[data-route]").forEach(b=>b.onclick=()=>toSection(b.dataset.route));
+    root.querySelectorAll("[data-complete]").forEach(b=>b.onclick=()=>completeTask(b.dataset.source,b.dataset.complete,b.dataset.value==="true"));
+    root.querySelectorAll("[data-edit-task]").forEach(b=>b.onclick=()=>{
+      if(b.dataset.source==="university"){toSection("university");return}
+      toSection("life");
+      const item=document.querySelector('#content [data-openitem="'+b.dataset.editTask+'"]');
+      if(item)item.click();
+    });
+    root.querySelectorAll("[data-edit-note]").forEach(b=>b.onclick=()=>noteModal(b.dataset.editNote));
+    root.querySelectorAll("[data-note-archive]").forEach(b=>b.onclick=()=>archiveNote(b.dataset.noteArchive));
+    root.querySelectorAll("[data-note-task]").forEach(b=>b.onclick=()=>makeTask(b.dataset.noteTask));
+    const more=root.querySelector("#ahdMoreTasks");if(more)more.onclick=()=>{allTasks=!allTasks;draw()};
+  }
+  render=function(){
+    oldRender();
+    const warning=document.querySelector("main>.notice");
+    if(warning)warning.hidden=page==="home"||page==="life";
+    if(page==="home")draw();
+  };
+  render();
+})();</script></body></html>
