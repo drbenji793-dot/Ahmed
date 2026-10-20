@@ -87,7 +87,7 @@ function tabbar(){
  return '<div class="alw-tabs">'+TABS.map(([k,v])=>`<button type="button" class="alw-tab ${k===tab?"active":""}" data-tab="${k}" aria-pressed="${k===tab}">${v}</button>`).join("")+"</div>";
 }
 function bookHeader(b){
- return `<button type="button" class="alw-back" data-action="shelf">← Bookshelf</button>`+heading(b.title,b.description||"Create your own world, one page at a time.",button("Rename Book","rename-book")+button("Export Backup","export")+button("Print Book","print-book"))+tabbar();
+ return `<button type="button" class="alw-back" data-action="shelf">← Bookshelf</button>`+heading(b.title,b.description||"Create your own world, one page at a time.",button("Rename Book","rename-book")+button("Export Backup","export")+button("Export Text","text")+button("Print Book","print-book"))+tabbar();
 }
 function chapterPage(root){
  const b=current(),items=sections("chapters");if(!items.some(x=>x.id===sectionId))sectionId=items[0]?.id||null;
@@ -442,7 +442,7 @@ function drawLayout(target){
  <div class="alw-canvas-wrap"><canvas id="alwCanvas" width="960" height="640" aria-label="Draw with your finger, mouse or stylus"></canvas></div>
  <div class="alw-draw-footer"><input id="alwArtTitle" maxlength="150" value="My drawing" placeholder="Artwork title">${targetSelect(target)}${button("Save Drawing","save-drawing","primary")}</div></div>`;
  panel.classList.add("open");panel.onclick=e=>{if(e.target===panel)closeDraw()};
- canvas=panel.querySelector("#alwCanvas");ctx=canvas.getContext("2d",{willReadFrequently:false});
+ canvas=panel.querySelector("#alwCanvas");const drawingRect=canvas.getBoundingClientRect();if(drawingRect.width>70&&drawingRect.height>70){const scale=Math.min(2,1600/Math.max(drawingRect.width,drawingRect.height));canvas.width=Math.round(drawingRect.width*scale);canvas.height=Math.round(drawingRect.height*scale)}ctx=canvas.getContext("2d",{willReadFrequently:false});
  ctx.fillStyle="#FFFFFF";ctx.fillRect(0,0,canvas.width,canvas.height);
  ctx.lineCap="round";ctx.lineJoin="round";undoStack=[];redoStack=[];drawColor="#263A31";drawMode="pencil";drawSize=5;
  panel.querySelector('[data-action="close-draw"]').onclick=closeDraw;
