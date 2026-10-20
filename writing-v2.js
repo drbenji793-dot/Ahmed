@@ -87,7 +87,7 @@ function tabbar(){
  return '<div class="alw-tabs">'+TABS.map(([k,v])=>`<button type="button" class="alw-tab ${k===tab?"active":""}" data-tab="${k}" aria-pressed="${k===tab}">${v}</button>`).join("")+"</div>";
 }
 function bookHeader(b){
- return `<button type="button" class="alw-back" data-action="shelf">← Bookshelf</button>`+heading(b.title,b.description||"Create your own world, one page at a time.",button("Rename Book","rename-book")+button("Export Backup","export")+button("Print Book","print-book"))+tabbar();
+ return `<button type="button" class="alw-back" data-action="shelf">← Bookshelf</button>`+heading(b.title,b.description||"Create your own world, one page at a time.",button("Rename Book","rename-book")+button("Export Backup","export")+button("Export Text","text")+button("Print Book","print-book"))+tabbar();
 }
 function chapterPage(root){
  const b=current(),items=sections("chapters");if(!items.some(x=>x.id===sectionId))sectionId=items[0]?.id||null;
