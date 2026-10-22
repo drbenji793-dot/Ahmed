@@ -2,3 +2,17 @@
 
 /* Whole-card links with independent priority controls. */
 .semester-subject,.semester-row{position:relative;isolation:isolate}.semester-subject .class-link::after,.semester-row .class-link::after{content:"";position:absolute;inset:0;z-index:1;border-radius:12px;cursor:pointer}.semester-subject select,.semester-row select,.semester-subject button,.semester-row button{position:relative;z-index:2}.semester-subject:has(.class-link:focus-visible),.semester-row:has(.class-link:focus-visible){outline:2px solid #47674d;outline-offset:3px}.semester-subject:has(.class-link:hover),.semester-row:has(.class-link:hover){box-shadow:0 0 0 1px #47674d44}
+/* Compact class cards and persistent ordering. */
+.semester .semester-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.semester .semester-subject{min-width:0;padding:12px;display:flex;flex-direction:column}
+.semester-subject .eyebrow{font-size:9px;letter-spacing:1.3px}
+.semester .semester-subject h2{font-size:15px;line-height:1.3;margin:5px 0 7px;overflow-wrap:break-word}
+.semester .semester-subject p{font-size:12px;line-height:1.4;margin:3px 0}
+.semester-subject .ah-badges{margin-top:auto;padding-top:8px;gap:5px}
+.semester-subject .ah-badge{font-size:11px;padding:5px 7px;min-height:32px;max-width:100%}
+.semester-subject .class-link,.semester-row .class-link{margin:0;font-size:0;line-height:0}
+.semester-tabs{align-items:center;flex-wrap:wrap}
+.semester .semester-tabs button{padding:8px 12px;min-height:36px;font-size:12px}
+.class-sort{margin-left:auto;display:flex;align-items:center;gap:5px;font-size:11px;color:#536a5b}
+.class-sort select{min-height:36px;max-width:118px;padding:6px;border:1px solid var(--edge);border-radius:9px;background:var(--surface);color:#365340;font-size:12px}
+@media(max-width:380px){.semester .semester-grid{gap:8px}.semester .semester-subject{padding:10px}.semester .semester-subject h2{font-size:14px}.class-sort{gap:3px}.semester .semester-tabs button{padding:8px 9px}.class-sort select{max-width:104px}}
