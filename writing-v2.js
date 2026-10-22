@@ -65,7 +65,7 @@ function shelf(root){
  root.innerHTML=heading("Writing Studio","Write books, create characters, draw scenes and keep every idea.",button("+ New Story","new-book","primary")+button("Import Backup","import"));
  root.innerHTML+=`<div class="alw-shelf">${list.map((b,i)=>`<button type="button" class="alw-book" data-book="${esc(b.id)}"><div class="alw-cover" data-cover="${esc(b.id)}"><small>AHMED · BOOK ${String(i+1).padStart(2,"0")}</small><strong dir="auto">${esc(b.title)}</strong><small>✦ YOUR STORY</small></div><div class="alw-book-info"><h2 dir="auto">${esc(b.title)}</h2><p>${esc(b.description||"A story waiting to be told")}</p><small>${(b.sections||[]).filter(x=>x.kind==="chapters").length} chapters · ${countBook(b).toLocaleString()} words</small></div></button>`).join("")}</div>`;
  if(!list.length)root.innerHTML+='<div class="alw-empty" style="margin-top:15px">Your bookshelf is empty. Start with a title, then add a chapter or character.</div>';
- root.innerHTML+='<div class="alw-tip"><strong>Private writing space.</strong> Books save in this browser. Use Export Backup regularly, especially before switching phones or clearing browser data.</div>';
+ root.innerHTML+='<div class="alw-tip"><strong>Shared writing space.</strong> Books and chapters sync across devices. Check Saved online before switching devices. Export Backup remains available.</div>';
  root.querySelectorAll("[data-book]").forEach(x=>x.onclick=()=>{bookId=x.dataset.book;tab="chapters";sectionId=sections("chapters")[0]?.id||null;editing=false;renderWriting()});
  bindActions(root);
  addCoverImages(root,list);
@@ -265,7 +265,7 @@ async function artworkPage(root){
  const b=current();
  root.innerHTML=bookHeader(b)+heading("Artwork Gallery","Draw a character, design a book cover or upload your own art.",targetSelectGallery()+button("✎ Draw","draw","primary")+button("Upload Art","upload"));
  root.innerHTML+='<div class="alw-gallery" id="alwGallery"><div class="alw-empty">Loading artwork…</div></div>';
- root.innerHTML+='<div class="alw-tip">Art is kept on this device in browser artwork storage. The Export Backup includes both writing and artwork.</div>';
+ root.innerHTML+='<div class="alw-tip">Artwork syncs across devices and stays cached on this device. Export Backup includes both writing and artwork.</div>';
  bindBookActions(root);bindActions(root);
  const token=++artVersion;
  try{
@@ -277,7 +277,7 @@ async function artworkPage(root){
  }catch{root.querySelector("#alwGallery").innerHTML='<div class="alw-empty">Artwork storage is unavailable in this browser.</div>'}
 }
 function removeArtwork(id){
- if(!confirm("Delete this artwork from this device? Export a backup if you want to keep it."))return;
+ if(!confirm("Delete this artwork from the shared workspace? A previous version remains in Sync & recovery."))return;
  return deleteArt(id).then(()=>{toast("Artwork removed");renderWriting()}).catch(()=>toast("Unable to delete artwork"));
 }
 async function setCover(id){
@@ -381,14 +381,14 @@ async function putArt(obj){
  const db=await openDB();
  return new Promise((resolve,reject)=>{
   const tx=db.transaction("art","readwrite"),req=tx.objectStore("art").put(obj);
-  tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}
+  tx.oncomplete=()=>{db.close();window.AhmedSync?.notify();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}
  });
 }
 async function deleteArt(artId){
  const db=await openDB();
  return new Promise((resolve,reject)=>{
   const tx=db.transaction("art","readwrite");tx.objectStore("art").delete(artId);
-  tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}
+  tx.oncomplete=()=>{db.close();window.AhmedSync?.notify();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}
  });
 }
 const imageOK=x=>typeof x==="string"&&/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(x);
@@ -416,7 +416,7 @@ function chosenTarget(){
 async function saveArtData(data,title,target){
  if(!bookId||!imageOK(data)){toast("This artwork format is not supported");return false}
  const item={id:id(),bookId,targetType:target?.type||"book",targetId:target?.id||bookId,title:(title||"Ahmed's drawing").trim().slice(0,150),kind:"art",data,isCover:false,updatedAt:new Date().toISOString()};
- try{await putArt(item);toast("Art saved in this browser");return true}catch(e){toast("Could not store artwork. Check available device storage.");return false}
+ try{await putArt(item);toast("Art saved locally · syncing online");return true}catch(e){toast("Could not store artwork. Check available device storage.");return false}
 }
 function startUpload(target){
  if(!bookId){toast("Create a story first");return}
@@ -561,5 +561,7 @@ window.ahWritingNavigation={
  set:s=>{bookId=s.book||null;sectionId=s.chapter||null;tab=TABS.some(t=>t[0]===s.section)?s.section:"chapters";subtab=["notes","outline"].includes(s.subtab)?s.subtab:"notes";editing=false;editAnchor=null},
  leave:leaveEdit
 };
+window.addEventListener('ahmed-cloud-updated',()=>{const v=Number(localStorage.getItem(DISPLAY_KEY));if(v>=14&&v<=28)fontSize=v;});
 install();
 })();
+

@@ -2,6 +2,7 @@
 const themes=['coffee','parchment','sage'];let theme='parchment';try{const saved=localStorage.getItem('ahmed-theme');if(themes.includes(saved))theme=saved}catch(e){}
 function applyTheme(){document.documentElement.dataset.theme=theme;document.querySelectorAll('.warm-themes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.theme===theme))}
 function themePicker(){const el=document.createElement('div');el.className='warm-themes';el.setAttribute('aria-label','Page color');el.innerHTML=themes.map(t=>`<button data-theme="${t}" aria-pressed="${t===theme}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>{theme=b.dataset.theme;try{localStorage.setItem('ahmed-theme',theme)}catch(e){}applyTheme()});return el}
+window.addEventListener('ahmed-cloud-updated',()=>{try{const v=localStorage.getItem('ahmed-theme');if(themes.includes(v)){theme=v;applyTheme()}}catch(e){}});
 applyTheme();const sidebar=document.querySelector('body>aside');if(sidebar)sidebar.insertBefore(themePicker(),sidebar.querySelector('nav'));else document.querySelector('main').prepend(themePicker());
 function footer(){const f=document.createElement('footer');f.className='warm-footer';f.innerHTML='<span class="rules-footer-meta"><a href="/search101.html">Search101</a><span>v1.3 · Updated 21 Oct 2026</span></span><a class="rules-footer-link" href="/rules.html" aria-label="Open Rules and Standards">▤ Rules</a>';return f}
 const subjects=[['english','English 2','17 Oct 2026 · 3:30 pm','HUB Yard · Zone C'],['ai','AI in Modern Life','20 Oct 2026 · 9:30 am','HUB Yard · Zone C'],['environment','Principles of Environmental Sciences','21 Oct 2026 · 12:30 pm','HUB Yard · Zone B'],['emirati','Emirati Studies','22 Oct 2026 · 9:30 am','HUB Yard · Zone A'],['psychology','Psychology II','23 Oct 2026 · 3:00 pm','HUB-101']];
@@ -147,3 +148,4 @@ else document.querySelector('main')?.appendChild(footer());
  },{passive:true});
  document.addEventListener('touchcancel',()=>{touch=null},{passive:true});
 })();
+
