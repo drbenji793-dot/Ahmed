@@ -16,3 +16,6 @@
 .class-sort{margin-left:auto;display:flex;align-items:center;gap:5px;font-size:11px;color:#536a5b}
 .class-sort select{min-height:36px;max-width:118px;padding:6px;border:1px solid var(--edge);border-radius:9px;background:var(--surface);color:#365340;font-size:12px}
 @media(max-width:380px){.semester .semester-grid{gap:8px}.semester .semester-subject{padding:10px}.semester .semester-subject h2{font-size:14px}.class-sort{gap:3px}.semester .semester-tabs button{padding:8px 9px}.class-sort select{max-width:104px}}
+
+/* Universal Rules footer, library v1.0 */
+.warm-footer{justify-content:space-between;max-width:1200px;width:100%;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px}.rules-footer-meta{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}.warm-footer .rules-footer-link{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;min-height:30px;border:1px solid var(--edge,#c5b597);border-radius:8px;text-decoration:none!important;color:#24503d;font-size:11px;font-weight:700;background:var(--surface,#fff9eb)}@media print{.warm-footer .rules-footer-link{display:none}}
