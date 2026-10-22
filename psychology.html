@@ -81,6 +81,7 @@ const questions=[
 [6,'A cultural group’s average differs on a measure. The safest conclusion is…',['Individuals still vary; check context and measurement','Every person fits the average','Culture alone caused the difference','One group is inherently better'],0,'Group summaries do not determine an individual’s traits or establish causality.']
 ];
 let state={ratings:{},answers:{}},tab='map',cardIndex=0,questionIndex=0,flipped=false,filter='all';
+window.ahStudyNavigation={get:()=>({section:tab,card:cardIndex,question:questionIndex,filter}),set:s=>{cardIndex=Math.max(0,Math.min(29,Number(s.card)||0));questionIndex=Math.max(0,Math.min(19,Number(s.question)||0));filter=typeof s.filter==='string'?s.filter:'all';flipped=false;selectTab(['map','cards','quiz','review'].includes(s.section)?s.section:'map')}};
 try{const s=JSON.parse(localStorage.getItem('ahmed-psychology-study-v1'));if(s&&typeof s.ratings==='object'&&typeof s.answers==='object')state=s}catch(e){}
 function save(){try{localStorage.setItem('ahmed-psychology-study-v1',JSON.stringify(state))}catch(e){document.getElementById('save-warning').textContent='Progress cannot be saved in this browser. You can still study in this session.'}}
 function selectTab(next){tab=next;document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tab===tab));render()}
