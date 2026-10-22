@@ -3,9 +3,30 @@ const themes=['coffee','parchment','sage'];let theme='parchment';try{const saved
 function applyTheme(){document.documentElement.dataset.theme=theme;document.querySelectorAll('.warm-themes button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.theme===theme))}
 function themePicker(){const el=document.createElement('div');el.className='warm-themes';el.setAttribute('aria-label','Page color');el.innerHTML=themes.map(t=>`<button data-theme="${t}" aria-pressed="${t===theme}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>{theme=b.dataset.theme;try{localStorage.setItem('ahmed-theme',theme)}catch(e){}applyTheme()});return el}
 applyTheme();const sidebar=document.querySelector('body>aside');if(sidebar)sidebar.insertBefore(themePicker(),sidebar.querySelector('nav'));else document.querySelector('main').prepend(themePicker());
-function footer(){const f=document.createElement('footer');f.className='warm-footer';f.innerHTML='<a href="/search101.html">Search101</a><span>v1.1 · Updated 21 Oct 2026</span>';return f}
+function footer(){const f=document.createElement('footer');f.className='warm-footer';f.innerHTML='<a href="/search101.html">Search101</a><span>v1.2 · Updated 22 Oct 2026</span>';return f}
 const subjects=[['english','English 2','17 Oct 2026 · 3:30 pm','HUB Yard · Zone C'],['ai','AI in Modern Life','20 Oct 2026 · 9:30 am','HUB Yard · Zone C'],['environment','Principles of Environmental Sciences','21 Oct 2026 · 12:30 pm','HUB Yard · Zone B'],['emirati','Emirati Studies','22 Oct 2026 · 9:30 am','HUB Yard · Zone A'],['psychology','Psychology II','23 Oct 2026 · 3:00 pm','HUB-101']];
-if(sidebar){modules.find(m=>m.id==='university').name='My Classes';const previous=render;render=function(){previous();const b=document.querySelector('.nav [data-page=university] .nav-label');if(b)b.innerHTML='My Classes<small class="nav-subtitle">Subjects · Exams · Study tools</small>';document.querySelectorAll('a[href="/psychology.html#research"]').forEach(a=>a.parentElement.remove());document.querySelectorAll('.semester-subject,.semester-row').forEach(card=>{const title=card.querySelector('h2,strong')?.textContent;const subject=subjects.find(s=>s[1]===title);if(subject&&!card.querySelector('.class-link')){card.querySelector('a[href="/psychology.html"]')?.remove();const a=document.createElement('a');a.className='class-link';a.href='/psychology.html?class='+subject[0];a.textContent='Open class →';card.appendChild(a)}})};render();document.querySelector('main').appendChild(footer());if(location.hash==='#classes'){page='university';render()}}
+
+let classSort='priority';
+try{const saved=localStorage.getItem('ahmed-class-sort');if(['priority','exam','name'].includes(saved))classSort=saved}catch(e){}
+function sortClasses(){
+ const rank={Urgent:0,High:1,Medium:2,Normal:3,Low:4},now=Date.now();
+ const info=card=>{const title=card.querySelector('h2,strong').textContent,x=semesterExams.find(x=>x.title===title);return {title,priority:rank[card.querySelector('.ah-priority')?.value]??3,date:new Date(x.date+'T'+x.time+':00+04:00').getTime()}};
+ const byDate=(a,b)=>(a.date<now)-(b.date<now)||(a.date>=now?a.date-b.date:b.date-a.date);
+ document.querySelectorAll('.semester-grid,.semester section[aria-label="Upcoming exams"],.semester details').forEach(parent=>{
+  const cards=Array.from(parent.children).filter(c=>c.matches('.semester-subject,.semester-row'));
+  cards.sort((ca,cb)=>{const a=info(ca),b=info(cb);return classSort==='name'?a.title.localeCompare(b.title):classSort==='priority'?a.priority-b.priority||byDate(a,b):byDate(a,b)});
+  cards.forEach(c=>parent.appendChild(c));
+ });
+}
+function classSortMenu(){
+ const tabs=document.querySelector('.semester-tabs');if(!tabs)return;
+ const label=document.createElement('label');label.className='class-sort';label.innerHTML='Sort by <select aria-label="Sort classes"><option value="priority">Priority</option><option value="exam">Next exam</option><option value="name">Class name</option></select>';
+ tabs.appendChild(label);const select=label.querySelector('select');select.value=classSort;
+ select.onchange=()=>{classSort=select.value;try{localStorage.setItem('ahmed-class-sort',classSort)}catch(e){}sortClasses()};
+ sortClasses();
+}
+
+if(sidebar){modules.find(m=>m.id==='university').name='My Classes';const previous=render;render=function(){previous();const b=document.querySelector('.nav [data-page=university] .nav-label');if(b)b.innerHTML='My Classes<small class="nav-subtitle">Subjects · Exams · Study tools</small>';document.querySelectorAll('a[href="/psychology.html#research"]').forEach(a=>a.parentElement.remove());document.querySelectorAll('.semester-subject,.semester-row').forEach(card=>{const title=card.querySelector('h2,strong')?.textContent;const subject=subjects.find(s=>s[1]===title);if(subject&&!card.querySelector('.class-link')){card.querySelector('a[href="/psychology.html"]')?.remove();const a=document.createElement('a');a.className='class-link';a.href='/psychology.html?class='+subject[0];a.setAttribute('aria-label','Open '+title);a.textContent='';card.appendChild(a)}});classSortMenu()};render();document.querySelector('main').appendChild(footer());if(location.hash==='#classes'){page='university';render()}}
 else if(document.getElementById('view')){
  const oldFooter=document.getElementById('research');if(oldFooter)oldFooter.replaceWith(footer());const priorStudyRender=render;render=function(){priorStudyRender();document.querySelectorAll('a[href="#research"]').forEach(a=>a.href='/search101.html#sources')};render();
  const toolbar=document.createElement('div');toolbar.className='class-toolbar';toolbar.innerHTML='<label for="class-select">My Classes</label><select id="class-select" aria-label="Switch class">'+subjects.map(s=>`<option value="${s[0]}">${s[1]}</option>`).join('')+'</select>';document.querySelector('main>header').before(toolbar);
