@@ -97,10 +97,7 @@ async function recovery(){
 }
 window.AhmedSync={sync,notify:schedule,recovery,artReady:()=>artReady};
 document.addEventListener("DOMContentLoaded",()=>{
- const bar=document.createElement("div");bar.style.cssText="display:flex;gap:6px;align-items:center;flex-wrap:wrap;font:11px system-ui;margin:8px 0 12px";
- badge=document.createElement("button");badge.type="button";badge.textContent="Connecting…";badge.style.cssText="font:600 11px system-ui;padding:7px 10px;min-height:32px;border:1px solid #b49759;border-radius:8px;background:#e2e8d5;color:#263e32";badge.onclick=sync;bar.append(badge);
- const recoveryButton=document.createElement("button");recoveryButton.type="button";recoveryButton.textContent="Sync & recovery";recoveryButton.style.cssText=badge.style.cssText;recoveryButton.onclick=recovery;bar.append(recoveryButton);
- document.querySelector("main")?.prepend(bar);sync();
+ sync();
  setInterval(()=>{refresh();if(!document.hidden)sync()},8000);
 });
 window.addEventListener("online",sync);window.addEventListener("offline",()=>paint("Offline · saved on this device"));
