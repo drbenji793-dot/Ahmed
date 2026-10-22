@@ -13,7 +13,7 @@ let activeTarget={type:"book",id:null};
 const priorRender=render;
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const words=s=>(String(s||"").trim().match(/\S+/gu)||[]).length;
-const id=()=>crypto.randomUUID();
+const id=()=>crypto.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2);
 const stamp=()=>new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Dubai",day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"}).format(new Date())+" Dubai";
 function books(){
  try{const raw=localStorage.getItem(BOOK_KEY);const a=raw?JSON.parse(raw):[];if(!Array.isArray(a))throw Error("not an array");return a}
@@ -94,9 +94,9 @@ function chapterPage(root){
  const s=section();
  root.innerHTML=bookHeader(b)+`<div class="alw-editor-layout"><aside class="alw-chapters"><div class="alw-list-head"><h3>Chapters</h3>${button("+ New","new-section","primary")}</div><div class="alw-list">${items.map((x,i)=>`<button class="alw-item ${x.id===sectionId?"active":""}" data-section="${esc(x.id)}" type="button"><strong dir="auto">${esc(x.title||"Chapter "+(i+1))}</strong><small>Revision ${Number(x.rev)||1} · ${words(x.body)} words</small></button>`).join("")}</div></aside><div><div class="alw-mobile-choice"><label for="alwMobileChapter" class="alw-visually-hidden">Select chapter</label><select id="alwMobileChapter">${items.map((x,i)=>`<option value="${esc(x.id)}" ${x.id===sectionId?"selected":""}>${esc(x.title||"Chapter "+(i+1))}</option>`).join("")}</select>${button("+ New","new-section","primary")}</div><div class="alw-editor">${s?editor(s):'<div class="alw-empty">Ready for your first chapter. Tap New Chapter to begin.</div>'}</div></div></div>`;
  bindBookActions(root);bindActions(root);
- root.querySelectorAll("[data-section]").forEach(btn=>btn.onclick=()=>{leaveEdit();sectionId=btn.dataset.section;renderWriting()});
+ root.querySelectorAll("[data-section]").forEach(btn=>btn.onclick=()=>{if(!leaveEdit())return;sectionId=btn.dataset.section;renderWriting()});
  const sel=root.querySelector("#alwMobileChapter");
- if(sel)sel.onchange=e=>{leaveEdit();sectionId=e.target.value;renderWriting()};
+ if(sel)sel.onchange=e=>{if(!leaveEdit())return;sectionId=e.target.value;renderWriting()};
  if(s)bindEditor(root,s);
 }
 function editor(s){
@@ -124,7 +124,7 @@ function bindEditor(root,s){
  const changed=()=>{root.querySelector("#alwWords").textContent=words(body.value).toLocaleString()+" words";const status=root.querySelector("#alwSaving");status.textContent="Unsaved changes";status.classList.add("alw-draft");clearTimeout(autosaveHandle);autosaveHandle=setTimeout(()=>commit(false),1300)};
  title.oninput=body.oninput=changed;
  const act=(key,fn)=>{const n=root.querySelector(`[data-action="${key}"]`);if(n)n.onclick=fn};
- act("edit",()=>{editAnchor={title:s.title,body:s.body,rev:Number(s.rev)||1};editing=true;renderWriting();document.getElementById("alwChapterBody")?.focus()});
+ act("edit",()=>{const latest=section()||s;editAnchor={title:latest.title,body:latest.body,rev:Number(latest.rev)||1};editing=true;renderWriting();document.getElementById("alwChapterBody")?.focus()});
  act("save",()=>{if(!commit(true))return;editing=false;editAnchor=null;renderWriting();toast("Saved and protected")});
  act("copy",()=>copyText(title.value+"\n\n"+body.value));
  act("history",()=>renderHistory(root,s));
@@ -156,7 +156,16 @@ function commit(final){
  if(status)status.textContent=final?"Saved":"Autosaved";
  return true;
 }
-function leaveEdit(){if(editing){commit(true);editing=false;editAnchor=null}}
+function leaveEdit(){
+ if(editing){
+  if(!commit(true))return false;
+  editing=false;editAnchor=null;
+  document.querySelectorAll('#alwChapterTitle,#alwChapterBody,[data-action="save"]').forEach(el=>el.disabled=true);
+  const edit=document.querySelector('[data-action="edit"]');if(edit)edit.disabled=false;
+  const status=document.querySelector('.alw-controls .alw-status');if(status)status.textContent='🔒 Protected';
+ }
+ return true;
+}
 function renderHistory(root,s){
  const panel=root.querySelector("#alwHistory");if(!panel)return;
  if(!panel.hidden&&panel.dataset.open==="1"){panel.hidden=true;panel.dataset.open="0";return}
@@ -166,7 +175,7 @@ function renderHistory(root,s){
  panel.querySelectorAll('[data-action="restore"]').forEach(el=>el.onclick=()=>{
   const old=hist[Number(el.dataset.old)];
   if(!old||!confirm("Restore this earlier version? The current text will remain in history."))return;
-  leaveEdit();
+  if(!leaveEdit())return;
   const list=books(),b=list.find(x=>x.id===bookId),target=b?.sections.find(x=>x.id===sectionId);
   if(!target)return;
   const before={rev:Number(target.rev)||1,title:target.title,body:target.body,at:stamp()};
@@ -192,7 +201,7 @@ function printChapters(items,title){
  win.document.close();setTimeout(()=>{win.focus();win.print()},250);
 }
 function bindBookActions(root){
- const tabs=root.querySelectorAll("[data-tab]");tabs.forEach(el=>el.onclick=()=>{leaveEdit();tab=el.dataset.tab;sectionId=null;editing=false;renderWriting()});
+ const tabs=root.querySelectorAll("[data-tab]");tabs.forEach(el=>el.onclick=()=>{if(!leaveEdit())return;tab=el.dataset.tab;sectionId=null;editing=false;renderWriting()});
 }
 function bindActions(root){
  root.querySelectorAll("[data-action]").forEach(btn=>{
@@ -201,10 +210,10 @@ function bindActions(root){
  });
 }
 async function handleAction(action,dataset){
- if(action==="shelf"){leaveEdit();bookId=null;sectionId=null;tab="chapters";renderWriting()}
+ if(action==="shelf"){if(!leaveEdit())return;bookId=null;sectionId=null;tab="chapters";renderWriting()}
  if(action==="new-book")openDialog("new-book");
  if(action==="rename-book")openDialog("rename-book");
- if(action==="new-section"){leaveEdit();openDialog("new-chapter")}
+ if(action==="new-section"){if(!leaveEdit())return;openDialog("new-chapter")}
  if(action==="new-character")openDialog("new-character");
  if(action==="edit-character")openDialog("edit-character",dataset.id);
  if(action==="draw-character")openDraw({type:"character",id:dataset.id});
@@ -485,7 +494,7 @@ function openDraw(target){
 }
 async function exportBook(){
  const b=current();if(!b)return;
- leaveEdit();
+ if(!leaveEdit())return;
  try{
   const art=(await allArt()).filter(x=>x.bookId===b.id);
   const data=JSON.stringify({format:"ahmed-writing-full-v2",exportedAt:new Date().toISOString(),book:b,artwork:art},null,2);
@@ -493,7 +502,7 @@ async function exportBook(){
  }catch{toast("Artwork storage unavailable; export your writing text as a separate backup")}
 }
 function exportText(){
- const b=current();if(!b)return;leaveEdit();
+ const b=current();if(!b)return;if(!leaveEdit())return;
  const text=b.title+"\n\n"+sections("chapters").map(s=>s.title+"\n\n"+(s.body||"")).join("\n\n\n");
  download(new Blob([text],{type:"text/plain;charset=utf-8"}),"Ahmed_Manuscript.txt");
 }
@@ -532,20 +541,25 @@ function startImport(){
 }
 function onBrand(e){
  if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
- e.preventDefault();leaveEdit();closeDialog();closeDraw();bookId=null;page="home";render();window.scrollTo({top:0,behavior:"auto"});
+ e.preventDefault();if(!leaveEdit())return;closeDialog();closeDraw();bookId=null;page="home";render();window.scrollTo({top:0,behavior:"auto"});
 }
 function install(){
  const logo=document.getElementById("ahmedHome");if(logo)logo.addEventListener("click",onBrand);
  document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;if(document.getElementById("alwDraw")?.classList.contains("open"))closeDraw();else if(document.getElementById("alwDialog")?.classList.contains("open"))closeDialog()});
- window.addEventListener("beforeunload",()=>commit(true));
+ window.addEventListener("beforeunload",e=>{if(editing&&!commit(true)){e.preventDefault();e.returnValue=""}});
  window.addEventListener("pagehide",()=>commit(true));
  render=function(){
-  if(page!=="writing"&&editing)leaveEdit();
+  if(page!=="writing"&&editing)if(!leaveEdit())return;
   priorRender();
   const warning=document.querySelector("main>.notice");if(warning)warning.hidden=page==="writing"||page==="home"||page==="life";
   if(page==="writing")renderWriting();
  };
  render();
 }
+window.ahWritingNavigation={
+ get:()=>({book:bookId,chapter:sectionId,section:tab,subtab}),
+ set:s=>{bookId=s.book||null;sectionId=s.chapter||null;tab=TABS.some(t=>t[0]===s.section)?s.section:"chapters";subtab=["notes","outline"].includes(s.subtab)?s.subtab:"notes";editing=false;editAnchor=null},
+ leave:leaveEdit
+};
 install();
 })();
