@@ -4,7 +4,17 @@ function applyTheme(){document.documentElement.dataset.theme=theme;document.quer
 function themePicker(){const el=document.createElement('div');el.className='warm-themes';el.setAttribute('aria-label','Page color');el.innerHTML=themes.map(t=>`<button data-theme="${t}" aria-pressed="${t===theme}">${t[0].toUpperCase()+t.slice(1)}</button>`).join('');el.querySelectorAll('button').forEach(b=>b.onclick=()=>{theme=b.dataset.theme;try{localStorage.setItem('ahmed-theme',theme)}catch(e){}applyTheme()});return el}
 window.addEventListener('ahmed-cloud-updated',()=>{try{const v=localStorage.getItem('ahmed-theme');if(themes.includes(v)){theme=v;applyTheme()}}catch(e){}});
 applyTheme();const sidebar=document.querySelector('body>aside');if(sidebar)sidebar.insertBefore(themePicker(),sidebar.querySelector('nav'));else document.querySelector('main').prepend(themePicker());
-function footer(){const f=document.createElement('footer');f.className='warm-footer';f.innerHTML='<span class="rules-footer-meta"><a href="/search101.html">Search101</a><span>v1.3 · Updated 21 Oct 2026</span></span><a class="rules-footer-link" href="/rules.html" aria-label="Open Rules and Standards">▤ Rules</a>';return f}
+function footer(){
+ const f=document.createElement('footer');
+ f.className='warm-footer uni-footer';
+ f.innerHTML=`<div class="warm-footer-links"><span class="rules-footer-meta"><a href="/search101.html">Search101</a></span><a class="rules-footer-link" href="/rules.html" aria-label="Open Rules and Standards">▤ Rules</a></div>
+  <button class="uni-top" type="button" aria-label="Back to top"><svg aria-hidden="true" viewBox="0 0 32 42" width="22" height="29" fill="currentColor"><path d="M2 16 16 0 30 16H21V28H11V16Z"/><rect x="11" y="31" width="10" height="3" rx="1.5"/><rect x="11" y="37" width="10" height="3" rx="1.5"/></svg></button>
+  <div class="uni-line" aria-hidden="true"></div>
+  <details class="uni-rec"><summary><span class="uni-chip">Technicals</span></summary><div class="uni-body">v1.3 · Updated 21 Oct 2026<br>Universal Site Design · 25 November 2026</div></details>
+`;
+ f.querySelector('.uni-top').onclick=()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+ return f;
+}
 const subjects=[['english','English 2','17 Oct 2026 · 3:30 pm','HUB Yard · Zone C'],['ai','AI in Modern Life','20 Oct 2026 · 9:30 am','HUB Yard · Zone C'],['environment','Principles of Environmental Sciences','21 Oct 2026 · 12:30 pm','HUB Yard · Zone B'],['emirati','Emirati Studies','22 Oct 2026 · 9:30 am','HUB Yard · Zone A'],['psychology','Psychology II','23 Oct 2026 · 3:00 pm','HUB-101']];
 
 let classSort='priority';
@@ -150,4 +160,3 @@ else document.querySelector('main')?.appendChild(footer());
 })();
 
 
-(()=>{if(window.__benjiGreenUp)return;window.__benjiGreenUp=true;function init(){const style=document.createElement('style');style.textContent='#benji-green-up{position:fixed!important;right:max(12px,env(safe-area-inset-right))!important;left:auto!important;bottom:max(16px,env(safe-area-inset-bottom))!important;width:44px!important;height:44px!important;padding:9px!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#536e55!important;z-index:99999!important;cursor:pointer}#benji-green-up svg{display:block;width:24px;height:28px}#benji-green-up[hidden]{display:none!important}#benji-up,#z-back-top,.tc-top,.back-to-top,#back-to-top{display:none!important}';document.head.append(style);let b=document.getElementById('benji-green-up');if(!b){b=document.createElement('button');b.id='benji-green-up';b.type='button';b.title='Back to top';b.setAttribute('aria-label','Back to top');b.innerHTML='<svg viewBox="0 0 24 28" fill="currentColor" aria-hidden="true"><path d="M12 1 2 13h7v8h6v-8h7Z"/><rect x="9" y="23" width="6" height="1.5" rx=".6"/><rect x="9" y="26" width="6" height="1.5" rx=".6"/></svg>';document.body.append(b)}const update=()=>b.hidden=window.scrollY<160;window.addEventListener('scroll',update,{passive:true});b.onclick=()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});update()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init()})();
