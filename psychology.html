@@ -2,7 +2,61 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Psychology II · Ahmed Life Lab</title>
 <style>
 :root{color-scheme:light;--ink:#293c34;--muted:#65756c;--paper:#f7f6f0}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}main{max-width:960px;margin:auto;padding:28px 20px 60px}a{color:#42695d}h1{font-size:clamp(32px,7vw,52px);letter-spacing:-2px;line-height:1.15;margin:12px 0}h2{font-size:23px;line-height:1.3}h3{font-size:17px}.eyebrow,small{font-size:12px}.eyebrow{letter-spacing:2px;text-transform:uppercase}.muted{color:var(--muted)}.pill{display:inline-block;border:1px solid #bb5e8144;background:#bb5e8110;color:#8d3e60;border-radius:9px;padding:5px 10px;font-size:12px}.notice{border-left:3px solid #b18532;background:#b1853210;padding:13px 17px;border-radius:10px;font-size:14px;margin:22px 0}.tabs,.actions{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}button,select{font:inherit;font-size:14px;min-height:44px;border:1px solid #42695d33;border-radius:12px;background:#fff9;color:var(--ink);padding:9px 15px;cursor:pointer}button[aria-pressed=true],button.primary{background:#345543;color:white}button:disabled{opacity:.6;cursor:default}button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #9561c5;outline-offset:3px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.box{border:1px solid #42695d25;background:#fff7;border-radius:18px;padding:22px;margin:12px 0}.topic{border-left:4px solid var(--tone);background:color-mix(in srgb,var(--tone) 6%,transparent);border-radius:13px;padding:17px;margin:10px 0}.topic summary{cursor:pointer;font-weight:650;min-height:44px}.topic p{font-size:14px}.flash{min-height:260px;display:flex;flex-direction:column;justify-content:center;text-align:center;background:#9561c50a}.flash h2{font-size:25px}.answer{border-top:1px solid #42695d25;padding-top:15px}.option{display:block;width:100%;text-align:left;margin:8px 0}.correct{background:#39875c15;border-color:#39875c}.wrong{background:#bc5d8315;border-color:#bc5d83}footer{font-size:12px;color:var(--muted);margin-top:50px;border-top:1px solid #42695d25;padding-top:18px}footer summary{cursor:pointer;min-height:44px;padding:10px 0}li{margin:8px 0}.hidden{display:none}#save-warning{color:#964a32}a{overflow-wrap:anywhere}@media(max-width:600px){.grid{grid-template-columns:1fr}main{padding:22px 16px}.box{padding:18px}.tabs button{flex:1;padding:9px}.flash h2{font-size:22px}}
-</style><script src="/sync-merge.js?v=1"></script><script src="/cloud-sync.js?v=1"></script></head><body><main>
+</style><script src="/sync-merge.js?v=1"></script><script src="/cloud-sync.js?v=1"></script><style id="uni005-compact">
+footer:has(> [data-uni-footer]){padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))!important}
+
+/* UNI005. The disclosure owns the tap area. Its label owns the visible chip. */
+:is(#site-rec,[data-uni-footer])[data-uni-footer],
+:is(#site-rec,[data-uni-footer])[data-uni-footer] details {
+  box-sizing:border-box!important; width:100%!important; max-width:100%!important;
+  margin:0!important; padding:0!important; border:0!important; border-radius:0!important;
+  background:transparent!important; box-shadow:none!important; text-align:left!important;
+  direction:ltr; color:#58564f; font:400 8px/12px system-ui,sans-serif!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(div,p,span,a,button,small,h3,dl,dt,dd,label,summary) {
+  font:400 8px/12px system-ui,sans-serif!important;
+  letter-spacing:normal!important; text-transform:none!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(.uni-body,.rec-body,.techbody,.tech-inner,.chapter-detail-group,.website-details,.technical-section,.uni005-release) {
+  background:transparent!important; border:0!important; box-shadow:none!important;
+  padding:0!important; margin:0!important; text-align:left!important; display:block;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary {
+  display:flex!important; align-items:flex-end!important; justify-content:flex-start!important;
+  width:max-content!important; max-width:100%!important; min-width:44px!important; height:44px!important; min-height:44px!important;
+  margin:0!important; padding:0!important; list-style:none!important; box-sizing:border-box!important;
+  background:transparent!important; border:0!important; border-radius:0!important; box-shadow:none!important;
+  transform:none!important; cursor:pointer; direction:ltr;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary::-webkit-details-marker {display:none}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary::before,
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary::after {content:none!important;display:none!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary > span {
+  display:inline-flex!important; align-items:center!important; justify-content:flex-start!important; flex:none!important;
+  box-sizing:border-box!important; width:max-content!important; min-width:0!important; height:14px!important; min-height:14px!important;
+  gap:4px!important; margin:0!important; padding:0 5px!important;
+  border:.5px solid rgba(130,122,109,.25)!important; border-radius:3px!important;
+  background:rgba(130,130,130,.16)!important; color:#58564f!important; box-shadow:none!important;
+  font:400 8px/1 system-ui,sans-serif!important; white-space:nowrap!important; overflow-wrap:normal!important;
+  transform:none!important; rotate:none!important; position:static!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] > summary > span {width:73px!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary > span::before {
+  display:inline!important; content:"▸"!important; font:400 8px/1 system-ui,sans-serif!important;
+  color:#527057!important; transform:none!important; border:0!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer][open] > summary > span::before,
+:is(#site-rec,[data-uni-footer])[data-uni-footer] details[open] > summary > span::before {content:"▾"!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary:focus-visible > span {outline:2px solid #527057;outline-offset:1px}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(.uni005-release,p) {margin:0!important;padding:0!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] .uni005-release {display:grid!important;gap:2px!important;padding-top:4px!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] [data-connections] {display:flex!important;gap:2px 8px!important;flex-wrap:wrap}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] [data-service] {display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] [data-service] i {display:inline-block;width:6px!important;height:6px!important;box-sizing:border-box;margin:0!important;border:1px solid currentColor;border-radius:50%}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(.actions,.actions-line,.row,.chapter-detail-row) {gap:2px 4px!important;padding:0!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] button {min-height:14px!important;padding:0 5px!important;margin:0!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] details[open] > p:first-of-type {padding-top:4px!important}
+</style></head><body><main>
 <a href="/">← Ahmed Life Lab</a><header><p class="eyebrow">Semester study space · PSY102</p><h1>Psychology, made clearer.</h1><p class="muted">Start small. Understand the idea. Try it without your notes.</p><span class="pill">Psychology II · 23 Oct 2026 · 3:00 pm Dubai · HUB-101</span></header>
 <aside class="notice"><strong>A useful starting point, not a confirmed exam guide.</strong> Your screenshot supplies the exam details. The opening-topic order below comes from a student-uploaded Spring 2025 syllabus. Your current instructor, assigned edition and midterm chapters still need confirmation. These are original practice questions, not predictions or recovered exam questions.</aside>
 <nav class="tabs" aria-label="Study sections"><button data-tab="map" aria-pressed="true">Study map</button><button data-tab="cards" aria-pressed="false">Flashcards</button><button data-tab="quiz" aria-pressed="false">Practice</button><button data-tab="review" aria-pressed="false">Review</button></nav>
@@ -93,7 +147,7 @@ if(tab==='quiz'){const q=questions[questionIndex],a=state.answers[questionIndex]
 if(tab==='review'){const attempted=questions.map((q,i)=>i).filter(i=>Number.isInteger(state.answers[i])),missed=attempted.filter(i=>state.answers[i]!==questions[i][3]);root.innerHTML=`<h2>Your next small wins.</h2><p>${attempted.length} of 20 attempted · ${attempted.length-missed.length} latest answers correct · ${missed.length} to revisit</p><p class="muted">Repeated attempts update these counts. They do not measure readiness for the actual midterm.</p>${missed.length?missed.map(i=>`<section class="box"><small>${topics[questions[i][0]][0]}</small><h3>${questions[i][1]}</h3><p>${questions[i][4]}</p><button data-retry="${i}">Retry question</button></section>`).join(''):'<section class="box">No missed answers recorded. Try the practice set or explain the study-map prompts without notes.</section>'}<button id="reviewcards">Review marked flashcards</button>`;root.querySelectorAll('[data-retry]').forEach(b=>b.onclick=()=>{questionIndex=Number(b.dataset.retry);delete state.answers[questionIndex];save();selectTab('quiz')});root.querySelector('#reviewcards').onclick=()=>{filter='again';cardIndex=0;flipped=false;selectTab('cards')}}
 }render();
 </script><link rel="stylesheet" href="/warm-theme.css"><script src="/warm-theme.js"></script><script>window.addEventListener('ahmed-cloud-updated',()=>{try{const s=JSON.parse(localStorage.getItem('ahmed-psychology-study-v1')||'null');if(s&&s.ratings&&s.answers){state=s;render()}}catch(e){}});</script><script defer src="/uni003.js"></script>
-<footer style="border-top:1px solid #ad9e8b;margin:12px 0;padding-top:8px"><details><summary style="width:max-content;padding:12px 0;cursor:pointer"><span style="display:inline-block;width:73px;text-align:center;background:#d8cfc2;color:#4e4b42;font:8px/14px system-ui;border-radius:3px">Technicals</span></summary><div class="uni005-release" dir="ltr"><p>Version 2026.11.26.1 · Released 26 November 2026 · 14:12 UTC</p><p data-connections data-origin="https://ahmed-life-lab.vercel.app" style="display:flex;flex-wrap:wrap;gap:4px 12px"><span role="img" data-service="github" aria-label="GitHub · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>GitHub</span><span role="img" data-service="vercel" aria-label="Vercel · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Vercel</span><span role="img" data-service="supabase" aria-label="Supabase · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Supabase</span></p><p><a href="https://ahmed-life-lab.vercel.app/latest.html" download>Download latest HTML · Ahmed Life Lab</a></p></div></details></footer><script>(() => {
+<footer style="border-top:1px solid #ad9e8b;margin:12px 0;padding-top:8px"><details data-uni-footer><summary><span style="display:inline-block;width:73px;text-align:center;background:#d8cfc2;color:#4e4b42;font:8px/14px system-ui;border-radius:3px">Technicals</span></summary><div class="uni005-release" dir="ltr"><p>Version 2026.11.26.2 · Released 26 November 2026 · 14:46 UTC</p><p data-connections data-origin="https://ahmed-life-lab.vercel.app" style="display:flex;flex-wrap:wrap;gap:4px 12px"><span role="img" data-service="github" aria-label="GitHub · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>GitHub</span><span role="img" data-service="vercel" aria-label="Vercel · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Vercel</span><span role="img" data-service="supabase" aria-label="Supabase · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Supabase</span></p><p><a href="https://ahmed-life-lab.vercel.app/latest.html" download>Download latest HTML · Ahmed Life Lab</a></p></div></details></footer><script>(() => {
   const services = ['github', 'vercel', 'supabase'];
   const labels = {connected:'verified',failed:'connection failed',unknown:'unverified'};
   const colors = {connected:'#397448',failed:'#b24039',unknown:'transparent'};

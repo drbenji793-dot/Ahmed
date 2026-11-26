@@ -18,7 +18,61 @@ dialog{background:var(--panel2);color:var(--ink);border:1px solid var(--line);bo
 @media(max-width:760px){.rule-list{grid-template-columns:1fr}.metrics{gap:6px}.metric{padding:10px}.metric strong{font-size:18px}.metric span{font-size:10px}.hero{padding-top:21px}.toolbar{align-items:stretch}.filterrow{width:100%}.input{flex:1;min-width:140px}.actionbar{width:100%;justify-content:flex-start}.tabs{padding:8px}.tab{font-size:10px;min-height:30px;padding:6px 8px}}@media(max-width:390px){.shell{width:calc(100% - 22px)}.filterrow select{max-width:130px}}
 @media print{.return,.themebar,.tabs,.toolbar,.rule-actions,.footer button{display:none!important}.rule-list{grid-template-columns:1fr}.rule{break-inside:avoid}body{background:#fff}}
 </style>
-<style>.uni-footer{direction:ltr;text-align:left;padding-top:12px}.uni-top{display:flex;align-items:center;justify-content:flex-start;width:44px;height:44px;background:transparent;border:0;padding:0;color:#527057;box-shadow:none;cursor:pointer}.uni-line{height:2px;margin:3px 0 0;background:linear-gradient(to bottom,rgba(93,75,53,.28) 0 50%,rgba(255,249,235,.8) 50% 100%)}.uni-rec{width:100%;margin:0;background:transparent;border:0;box-shadow:none}.uni-rec>summary{display:flex;align-items:center;justify-content:flex-start;list-style:none;min-height:44px;width:max-content;padding:0;cursor:pointer}.uni-rec>summary::-webkit-details-marker,.uni-rec>summary::before{display:none;content:none}.uni-chip{box-sizing:border-box;display:inline-flex;align-items:center;gap:4px;width:73px;height:14px;border:.5px solid rgba(130,122,109,.25);border-radius:3px;background:rgba(130,130,130,.16);color:#58564f;font:400 8px/1 system-ui,sans-serif;padding:0 5px}.uni-chip::before{content:'▸';color:#527057;font-size:8px}.uni-rec[open] .uni-chip::before{content:'▾'}.uni-body{padding:6px 0 12px;font:12px/1.5 system-ui,sans-serif}</style></head>
+<style>.uni-footer{direction:ltr;text-align:left;padding-top:12px}.uni-top{display:flex;align-items:center;justify-content:flex-start;width:44px;height:44px;background:transparent;border:0;padding:0;color:#527057;box-shadow:none;cursor:pointer}.uni-line{height:2px;margin:3px 0 0;background:linear-gradient(to bottom,rgba(93,75,53,.28) 0 50%,rgba(255,249,235,.8) 50% 100%)}.uni-rec{width:100%;margin:0;background:transparent;border:0;box-shadow:none}.uni-rec>summary{display:flex;align-items:center;justify-content:flex-start;list-style:none;min-height:44px;width:max-content;padding:0;cursor:pointer}.uni-rec>summary::-webkit-details-marker,.uni-rec>summary::before{display:none;content:none}.uni-chip{box-sizing:border-box;display:inline-flex;align-items:center;gap:4px;width:73px;height:14px;border:.5px solid rgba(130,122,109,.25);border-radius:3px;background:rgba(130,130,130,.16);color:#58564f;font:400 8px/1 system-ui,sans-serif;padding:0 5px}.uni-chip::before{content:'▸';color:#527057;font-size:8px}.uni-rec[open] .uni-chip::before{content:'▾'}.uni-body{padding:6px 0 12px;font:12px/1.5 system-ui,sans-serif}</style><style id="uni005-compact">
+footer:has(> [data-uni-footer]){padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))!important}
+
+/* UNI005. The disclosure owns the tap area. Its label owns the visible chip. */
+:is(#site-rec,[data-uni-footer])[data-uni-footer],
+:is(#site-rec,[data-uni-footer])[data-uni-footer] details {
+  box-sizing:border-box!important; width:100%!important; max-width:100%!important;
+  margin:0!important; padding:0!important; border:0!important; border-radius:0!important;
+  background:transparent!important; box-shadow:none!important; text-align:left!important;
+  direction:ltr; color:#58564f; font:400 8px/12px system-ui,sans-serif!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(div,p,span,a,button,small,h3,dl,dt,dd,label,summary) {
+  font:400 8px/12px system-ui,sans-serif!important;
+  letter-spacing:normal!important; text-transform:none!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(.uni-body,.rec-body,.techbody,.tech-inner,.chapter-detail-group,.website-details,.technical-section,.uni005-release) {
+  background:transparent!important; border:0!important; box-shadow:none!important;
+  padding:0!important; margin:0!important; text-align:left!important; display:block;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary {
+  display:flex!important; align-items:flex-end!important; justify-content:flex-start!important;
+  width:max-content!important; max-width:100%!important; min-width:44px!important; height:44px!important; min-height:44px!important;
+  margin:0!important; padding:0!important; list-style:none!important; box-sizing:border-box!important;
+  background:transparent!important; border:0!important; border-radius:0!important; box-shadow:none!important;
+  transform:none!important; cursor:pointer; direction:ltr;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary::-webkit-details-marker {display:none}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary::before,
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary::after {content:none!important;display:none!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary > span {
+  display:inline-flex!important; align-items:center!important; justify-content:flex-start!important; flex:none!important;
+  box-sizing:border-box!important; width:max-content!important; min-width:0!important; height:14px!important; min-height:14px!important;
+  gap:4px!important; margin:0!important; padding:0 5px!important;
+  border:.5px solid rgba(130,122,109,.25)!important; border-radius:3px!important;
+  background:rgba(130,130,130,.16)!important; color:#58564f!important; box-shadow:none!important;
+  font:400 8px/1 system-ui,sans-serif!important; white-space:nowrap!important; overflow-wrap:normal!important;
+  transform:none!important; rotate:none!important; position:static!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] > summary > span {width:73px!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary > span::before {
+  display:inline!important; content:"▸"!important; font:400 8px/1 system-ui,sans-serif!important;
+  color:#527057!important; transform:none!important; border:0!important;
+}
+:is(#site-rec,[data-uni-footer])[data-uni-footer][open] > summary > span::before,
+:is(#site-rec,[data-uni-footer])[data-uni-footer] details[open] > summary > span::before {content:"▾"!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] summary:focus-visible > span {outline:2px solid #527057;outline-offset:1px}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(.uni005-release,p) {margin:0!important;padding:0!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] .uni005-release {display:grid!important;gap:2px!important;padding-top:4px!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] [data-connections] {display:flex!important;gap:2px 8px!important;flex-wrap:wrap}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] [data-service] {display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] [data-service] i {display:inline-block;width:6px!important;height:6px!important;box-sizing:border-box;margin:0!important;border:1px solid currentColor;border-radius:50%}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] :is(.actions,.actions-line,.row,.chapter-detail-row) {gap:2px 4px!important;padding:0!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] button {min-height:14px!important;padding:0 5px!important;margin:0!important}
+:is(#site-rec,[data-uni-footer])[data-uni-footer] details[open] > p:first-of-type {padding-top:4px!important}
+</style></head>
 <body>
 <div class="shell">
 <header class="topbar"><span class="brand">BENJI · RULES LIBRARY</span><a class="return" href="/">← Back to website</a></header>
@@ -122,9 +176,9 @@ render();
 </script><footer class="uni-footer">
   <button class="uni-top" type="button" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})"><svg aria-hidden="true" viewBox="0 0 32 42" width="22" height="29" fill="currentColor"><path d="M2 16 16 0 30 16H21V28H11V16Z"/><rect x="11" y="31" width="10" height="3" rx="1.5"/><rect x="11" y="37" width="10" height="3" rx="1.5"/></svg></button>
   <div class="uni-line" aria-hidden="true"></div>
-  <details class="uni-rec"><summary><span class="uni-chip">Technicals</span></summary><div class="uni-body">Universal Site Design · 25 November 2026</div></details>
+  <details data-uni-footer class="uni-rec"><summary><span class="uni-chip">Technicals</span></summary><div class="uni-body">Universal Site Design · 25 November 2026</div></details>
 </footer><script defer src="/uni003.js"></script>
-<footer style="border-top:1px solid #ad9e8b;margin:12px 0;padding-top:8px"><details><summary style="width:max-content;padding:12px 0;cursor:pointer"><span style="display:inline-block;width:73px;text-align:center;background:#d8cfc2;color:#4e4b42;font:8px/14px system-ui;border-radius:3px">Technicals</span></summary><div class="uni005-release" dir="ltr"><p>Version 2026.11.26.1 · Released 26 November 2026 · 14:12 UTC</p><p data-connections data-origin="https://ahmed-life-lab.vercel.app" style="display:flex;flex-wrap:wrap;gap:4px 12px"><span role="img" data-service="github" aria-label="GitHub · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>GitHub</span><span role="img" data-service="vercel" aria-label="Vercel · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Vercel</span><span role="img" data-service="supabase" aria-label="Supabase · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Supabase</span></p><p><a href="https://ahmed-life-lab.vercel.app/latest.html" download>Download latest HTML · Ahmed Life Lab</a></p></div></details></footer><script>(() => {
+<footer style="border-top:1px solid #ad9e8b;margin:12px 0;padding-top:8px"><details data-uni-footer><summary><span style="display:inline-block;width:73px;text-align:center;background:#d8cfc2;color:#4e4b42;font:8px/14px system-ui;border-radius:3px">Technicals</span></summary><div class="uni005-release" dir="ltr"><p>Version 2026.11.26.2 · Released 26 November 2026 · 14:46 UTC</p><p data-connections data-origin="https://ahmed-life-lab.vercel.app" style="display:flex;flex-wrap:wrap;gap:4px 12px"><span role="img" data-service="github" aria-label="GitHub · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>GitHub</span><span role="img" data-service="vercel" aria-label="Vercel · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Vercel</span><span role="img" data-service="supabase" aria-label="Supabase · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Supabase</span></p><p><a href="https://ahmed-life-lab.vercel.app/latest.html" download>Download latest HTML · Ahmed Life Lab</a></p></div></details></footer><script>(() => {
   const services = ['github', 'vercel', 'supabase'];
   const labels = {connected:'verified',failed:'connection failed',unknown:'unverified'};
   const colors = {connected:'#397448',failed:'#b24039',unknown:'transparent'};
