@@ -3,4 +3,32 @@
 <li><a href="https://www.cengage.ca/c/essentials-of-psychology-7e-bernstein/9781337612395/" target="_blank" rel="noopener">Cengage: Bernstein, Essentials of Psychology, 7th edition</a>: book structure.</li>
 <li><a href="https://store.macmillanlearning.com/us/product/Achieve-for-Exploring-Psychology-1-Term-Online/p/1319369901" target="_blank" rel="noopener">Macmillan: Exploring Psychology, 12th edition</a>: historical alternative textbook.</li>
 <li><a href="https://openstax.org/details/books/psychology-2e" target="_blank" rel="noopener">OpenStax Psychology 2e</a>: free supplementary reading, not the confirmed CUD textbook. See sections 2 (research), 7 (thinking), 10.4 (emotion), 12 (social), 14 (well-being), 16 (therapy).</li></ul></section><section><h2>Version history</h2><p><strong>v1.1 · 21 Oct 2026:</strong> dedicated rules page, compact class selector, My Classes navigation and three warm color themes.</p><p><strong>v1.0 · 21 Oct 2026:</strong> initial Psychology II study map, book clues, 30 flashcards and 20 practice questions.</p><p>Research stages: Search101 v1.0; Search102 v1.0; Search103 v0.1; Search104 v1.0; Search105 v0.1. Assessment research and refinement remain provisional.</p></section></main><script src="/warm-theme.js"></script><script defer src="/uni003.js"></script>
-</body></html>
+<footer style="border-top:1px solid #ad9e8b;margin:12px 0;padding-top:8px"><details><summary style="width:max-content;padding:12px 0;cursor:pointer"><span style="display:inline-block;width:73px;text-align:center;background:#d8cfc2;color:#4e4b42;font:8px/14px system-ui;border-radius:3px">Technicals</span></summary><div class="uni005-release" dir="ltr"><p>Version 2026.11.26.1 · Released 26 November 2026 · 14:12 UTC</p><p data-connections data-origin="https://ahmed-life-lab.vercel.app" style="display:flex;flex-wrap:wrap;gap:4px 12px"><span role="img" data-service="github" aria-label="GitHub · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>GitHub</span><span role="img" data-service="vercel" aria-label="Vercel · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Vercel</span><span role="img" data-service="supabase" aria-label="Supabase · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Supabase</span></p><p><a href="https://ahmed-life-lab.vercel.app/latest.html" download>Download latest HTML · Ahmed Life Lab</a></p></div></details></footer><script>(() => {
+  const services = ['github', 'vercel', 'supabase'];
+  const labels = {connected:'verified',failed:'connection failed',unknown:'unverified'};
+  const colors = {connected:'#397448',failed:'#b24039',unknown:'transparent'};
+  async function check(row) {
+    function paint(states) {
+      for (const name of services) {
+        const label = row.querySelector('[data-service="'+name+'"]');
+        const state = Object.hasOwn(labels,states[name]) ? states[name] : 'unknown';
+        label.firstElementChild.style.backgroundColor = colors[state];
+        label.title = label.textContent.trim() + ' · ' + labels[state];
+        label.setAttribute('aria-label', label.title);
+      }
+    }
+    paint({});
+    try {
+      const url = new URL('/api/uni005', location.protocol === 'file:' ? row.dataset.origin : location.origin);
+      const response = await fetch(url, {cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(8000)});
+      if (response.ok) paint(await response.json());
+    } catch { /* A saved copy can be opened offline. */ }
+  }
+  document.addEventListener('toggle', e => {
+    if (e.target.tagName === 'DETAILS' && e.target.open) {
+      const row = e.target.querySelector('[data-connections]');
+      if (row && row.closest('details') === e.target) check(row);
+    }
+  }, true);
+})();
+</script></body></html>
