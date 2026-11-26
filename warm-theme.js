@@ -135,7 +135,7 @@ else document.querySelector('main')?.appendChild(footer());
  addEventListener('pageshow',e=>{if(e.persisted){active=history.state?.ahmedNav||active;restoring=true;requestAnimationFrame(()=>{restorePosition(active.id);restoring=false})}});
  addEventListener('beforeunload',e=>{remember();if(pendingDialog()||window.ahWritingNavigation?.leave()===false){e.preventDefault();e.returnValue=''}});
  function excluded(el){return !!el.closest('input,textarea:not(:disabled):not([readonly]),select,button,[contenteditable="true"],canvas,.modal,.alw-dialog-bg,.alw-draw-modal')||!!window.getSelection()?.toString()}
- document.addEventListener('touchstart',e=>{
+ document.addEventListener('touchstart',e=>{if(document.getElementById('uni023-navigation'))return;
   touch=null;if(e.touches.length!==1||excluded(e.target)||pendingDialog())return;
   const t=e.touches[0];
   // Reserve the outer edges for Safari's native history gesture.
