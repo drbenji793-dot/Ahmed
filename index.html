@@ -288,7 +288,7 @@ footer:has(> [data-uni-footer]){padding-bottom:calc(62px + env(safe-area-inset-b
 :is(#site-rec,[data-uni-footer])[data-uni-footer] :is(.actions,.actions-line,.row,.chapter-detail-row) {gap:2px 4px!important;padding:0!important}
 :is(#site-rec,[data-uni-footer])[data-uni-footer] button {min-height:14px!important;padding:0 5px!important;margin:0!important}
 :is(#site-rec,[data-uni-footer])[data-uni-footer] details[open] > p:first-of-type {padding-top:4px!important}
-</style></head><body><aside><header class="logo"><a id="ahmedHome" href="/" aria-label="Ahmed Life Lab home" title="Back to Dashboard">ahmed.<span>LIFE LAB</span></a></header><nav class="nav" id="nav"></nav><div class="foot">Learn · Create · Grow<br/>Ahmed Life Lab v1</div></aside><main><div class="top"><div class="eyebrow">YOUR PERSONAL WORKSPACE</div><div class="chip" id="clock">Dubai · UAE</div></div><div id="content"></div><div class="notice">Shared workspace. Entries sync across devices when online. Check the sync status before closing this page.</div></main><div id="modal" class="modal"><div class="dialog"><h2 id="modalTitle">New entry</h2><form id="entryForm"><label for="entryTitle">Title</label><input id="entryTitle" maxlength="150" required placeholder="Give this a name"/><label for="entryDate">Date (optional)</label><input type="date" id="entryDate"/><label for="entryDetails">Notes</label><textarea id="entryDetails" placeholder="Details, ideas, goals..."></textarea><div class="buttons"><button class="primary" type="submit">Save entry</button><button class="secondary" type="button" id="cancel">Cancel</button></div></form></div></div><script>
+</style><style>@media(pointer:coarse){[data-prev="-1"],[data-prev="1"]{display:none!important}}</style></head><body><aside><header class="logo"><a id="ahmedHome" href="/" aria-label="Ahmed Life Lab home" title="Back to Dashboard">ahmed.<span>LIFE LAB</span></a></header><nav class="nav" id="nav"></nav><div class="foot">Learn · Create · Grow<br/>Ahmed Life Lab v1</div></aside><main><div class="top"><div class="eyebrow">YOUR PERSONAL WORKSPACE</div><div class="chip" id="clock">Dubai · UAE</div></div><div id="content"></div><div class="notice">Shared workspace. Entries sync across devices when online. Check the sync status before closing this page.</div></main><div id="modal" class="modal"><div class="dialog"><h2 id="modalTitle">New entry</h2><form id="entryForm"><label for="entryTitle">Title</label><input id="entryTitle" maxlength="150" required placeholder="Give this a name"/><label for="entryDate">Date (optional)</label><input type="date" id="entryDate"/><label for="entryDetails">Notes</label><textarea id="entryDetails" placeholder="Details, ideas, goals..."></textarea><div class="buttons"><button class="primary" type="submit">Save entry</button><button class="secondary" type="button" id="cancel">Cancel</button></div></form></div></div><script>
 const semesterExams=[{"id": "semester-2026-oct-17", "title": "English 2", "date": "2026-10-17", "time": "15:30", "details": "HUB Yard \u00b7 Zone C", "kind": "event", "source": "university", "priority": "Low", "exam": true}, {"id": "semester-2026-oct-20", "title": "AI in Modern Life", "date": "2026-10-20", "time": "09:30", "details": "HUB Yard \u00b7 Zone C", "kind": "event", "source": "university", "priority": "Low", "exam": true}, {"id": "semester-2026-oct-21", "title": "Principles of Environmental Sciences", "date": "2026-10-21", "time": "12:30", "details": "HUB Yard \u00b7 Zone B", "kind": "event", "source": "university", "priority": "Low", "exam": true}, {"id": "semester-2026-oct-22", "title": "Emirati Studies", "date": "2026-10-22", "time": "09:30", "details": "HUB Yard \u00b7 Zone A", "kind": "event", "source": "university", "priority": "Low", "exam": true}, {"id": "semester-2026-oct-23", "title": "Psychology II", "date": "2026-10-23", "time": "15:00", "details": "HUB-101", "kind": "event", "source": "university", "priority": "Low", "exam": true}];
 
 
@@ -757,7 +757,7 @@ render();
 <script>
 (function(){const prior=render;render=function(){prior();if(page!=='university')return;document.querySelectorAll('.semester-subject,.semester-row').forEach(card=>{if(card.querySelector('h2,strong')?.textContent==='Psychology II'){const link=document.createElement('a');link.href='/psychology.html';link.textContent='Open study hub →';link.style.cssText='display:inline-block;margin-top:10px;font-size:13px;color:#8d3e60';card.appendChild(link)}});const footer=document.createElement('p');footer.className='semester-footer';footer.innerHTML='<a href="/psychology.html#research">Research · Search101–105 · v1.0 · 21 Oct 2026</a>';document.querySelector('.semester')?.appendChild(footer)};render()})();
 </script><link rel="stylesheet" href="/warm-theme.css"><script src="/warm-theme.js"></script><script>window.addEventListener("ahmed-cloud-updated",()=>{if(typeof render==="function")render()});</script><script defer src="/uni003.js"></script>
-<footer style="border-top:1px solid #ad9e8b;margin:12px 0;padding-top:8px"><details data-uni-footer><summary><span style="display:inline-block;width:73px;text-align:center;background:#d8cfc2;color:#4e4b42;font:8px/14px system-ui;border-radius:3px">Technicals</span></summary><div class="uni005-release" dir="ltr"><p>Version 2026.11.26.2 · Released 26 November 2026 · 14:46 UTC</p><p data-connections data-origin="https://ahmed-life-lab.vercel.app" style="display:flex;flex-wrap:wrap;gap:4px 12px"><span role="img" data-service="github" aria-label="GitHub · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>GitHub</span><span role="img" data-service="vercel" aria-label="Vercel · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Vercel</span><span role="img" data-service="supabase" aria-label="Supabase · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Supabase</span></p><p><a href="https://ahmed-life-lab.vercel.app/latest.html" download>Download latest HTML · Ahmed Life Lab</a></p></div></details></footer><script>(() => {
+<footer style="border-top:1px solid #ad9e8b;margin:12px 0;padding-top:8px"><details data-uni-footer><summary><span style="display:inline-block;width:73px;text-align:center;background:#d8cfc2;color:#4e4b42;font:8px/14px system-ui;border-radius:3px">Technicals</span></summary><div class="uni005-release" dir="ltr"><p>Version 2026.11.26.3 · Released 26 November 2026 · 16:42 UTC</p><p data-connections data-origin="https://ahmed-life-lab.vercel.app" style="display:flex;flex-wrap:wrap;gap:4px 12px"><span role="img" data-service="github" aria-label="GitHub · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>GitHub</span><span role="img" data-service="vercel" aria-label="Vercel · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Vercel</span><span role="img" data-service="supabase" aria-label="Supabase · unverified"><i aria-hidden="true" style="display:inline-block;width:7px;height:7px;border:1px solid currentColor;border-radius:100%;margin-right:4px"></i>Supabase</span></p><p><a href="https://ahmed-life-lab.vercel.app/latest.html" download>Download latest HTML · Ahmed Life Lab</a></p></div></details></footer><script>(() => {
   const services = ['github', 'vercel', 'supabase'];
   const labels = {connected:'verified',failed:'connection failed',unknown:'unverified'};
   const colors = {connected:'#397448',failed:'#b24039',unknown:'transparent'};
@@ -784,6 +784,52 @@ render();
       if (row && row.closest('details') === e.target) check(row);
     }
   }, true);
+})();
+</script><script id="uni023-navigation">(() => {
+  const tabs = "#nav [data-page]";
+  const pager = {"area": ".ahc", "prev": "[data-prev=\"-1\"]", "next": "[data-prev=\"1\"]"};
+  const skip = 'input,select,textarea,button,a,summary,form,[contenteditable]:not([contenteditable=false]),[draggable=true],[data-drag-handle],.goe-board,.shelf-grid,.cue-controls';
+  const dirtyForms=new WeakSet();
+  document.addEventListener('input',e=>{if(e.target.form)dirtyForms.add(e.target.form);});
+  document.addEventListener('reset',e=>dirtyForms.delete(e.target));
+  let start;
+  function reset() { start = null; }
+  function route(target) {
+    if ([...document.querySelectorAll('dialog[open], [role=dialog]')].some(d=>d.getClientRects().length && !d.querySelector('.cue-copy')) ||
+        document.activeElement?.matches('input,textarea,select,[contenteditable=true]') ||
+        [...document.querySelectorAll('[contenteditable=true]')].some(e=>e.getClientRects().length) ||
+        ([...document.forms].some(f=>dirtyForms.has(f)&&f.getClientRects().length)) ||
+        (target.closest(skip) && !target.closest('[data-date],[data-month],#cal button')) || window.getSelection()?.toString()) return;
+    for (let p = target; p && p !== document.body; p = p.parentElement) {
+      if (p.scrollWidth > p.clientWidth + 2 && /auto|scroll/.test(getComputedStyle(p).overflowX)) return;
+    }
+    if (pager && target.closest(pager.area)) return {scope:location.href, step(delta) {
+      const control=document.querySelector(delta>0?pager.next:pager.prev);
+      if(control && !control.matches(':disabled,[aria-disabled=true]')) control.click();
+    }};
+    const choices = [...document.querySelectorAll(tabs)].filter(el => el.getClientRects().length);
+    const index = choices.findIndex(el => el.matches('[aria-selected=true],[aria-current=page],[aria-pressed=true],.active,.selected'));
+    if(index < 0) return;
+    return {scope:location.href,step(delta) { const next=choices[index+delta]; if(next?.isConnected && !next.disabled) next.click(); }};
+  }
+  document.addEventListener('touchstart', e => {
+    reset(); if(e.touches.length!==1 || !(e.target instanceof Element)) return;
+    const {clientX:x,clientY:y}=e.touches[0];
+    if(x<24 || innerWidth-x<24) return;
+    const dest=route(e.target); if(dest) start={x,y,dest};
+  },{passive:true});
+  document.addEventListener('touchmove',e=>{
+    if(!start || e.touches.length!==1){reset();return;}
+    const dy=Math.abs(e.touches[0].clientY-start.y),dx=Math.abs(e.touches[0].clientX-start.x);
+    if(dy>12 && dy>=dx) reset();
+  },{passive:true});
+  document.addEventListener('touchcancel',reset);
+  document.addEventListener('touchend',e=>{
+    const g=start;reset();
+    if(!g || e.touches.length || !e.changedTouches.length || location.href!==g.dest.scope || window.getSelection()?.toString())return;
+    const dx=e.changedTouches[0].clientX-g.x,dy=e.changedTouches[0].clientY-g.y;
+    if(Math.abs(dx)>=55 && Math.abs(dx)>1.7*Math.abs(dy)){if(e.cancelable)e.preventDefault();g.dest.step(dx<0?1:-1);}
+  },{passive:false});
 })();
 </script></body></html>
 
